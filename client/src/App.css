@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s ease-in-out forwards;
+  height: 10vmin;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logo-wIdo{
+  position: relative;
+  width: 500px;
+  top:100px;
+  right: 50px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  50%{
+    margin-top:500px;
+    padding-right:450px;
+    transform: rotate(360deg);
+  }
+}
+

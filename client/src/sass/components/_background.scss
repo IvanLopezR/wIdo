@@ -1,0 +1,377 @@
+.background-general{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  align-items: flex-start;
+  z-index: 9;
+  overflow: scroll;
+
+}
+
+.background-index-1 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Amsterdam.jpg") no-repeat ;
+  background-size: cover;
+}
+
+.background-index-2 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/ArabiaSaudita.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-3 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Atenas.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-4 {
+  
+
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Bamako.jpg")  no-repeat ;
+    background-size: cover;
+  
+}
+
+.background-index-5 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Bangkok.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-6 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Barcelona.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-7 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Berlin.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-8 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Bruselas.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-9 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Budapest.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-10 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/BuenosAires.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-11 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Caracas.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-12 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/China.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-13 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Colombia.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-14 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Copenhage.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-15 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/CoreaDelSur.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-16 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Cuba.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-17 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Delhi.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-18 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Dubai.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-19 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Edimburgo.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-20 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/ElCairo.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-21 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Estambul.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-22 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Islamabad.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-23 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Islandia.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-24 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Jerusalen.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-25 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Jordania.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-26 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Kenia.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-27 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Kiev.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-28 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/LaValeta.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-29 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Lisboa.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-30 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Londres.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-31 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Madagascar.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-32 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Madrid.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-33 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Madrid2.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-34 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Marrakech.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-35 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Mexico.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-36 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Mexico2.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-37 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Milan.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-38 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Moscu.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-39 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Nepal.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-40 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/NuevaYork.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-41 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/NuevaZelanda.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-42 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Paris.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-43 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Pekin.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-44 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Peru2.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-45 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Praga.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-46 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Pyongyang.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-47 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Quebec.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-48 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Rabat.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-49 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/RioDeJaneiro.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-50 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/RioDeJaneiro2.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-51 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Roma.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-52 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Rumania.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-53 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/SanFrancisco.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-54 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/SantiagoDeChile.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-55 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/SantoDomingo.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-56 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Seul.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-57 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Sevilla.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-58 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Sidney.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-59 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Singapur.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-60 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Sofia.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-61 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Tailandia.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-62 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Tailandia2.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-63 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Tanzania.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-64 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Tokio.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-65 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Toronto.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-66 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Tunez.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-67 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Varsovia.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-68 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Viena.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-69 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Vietnam.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-70 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Vietnam2.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-71 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Yakarta.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-72 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Zagreb.jpg")  no-repeat ;
+  background-size: cover;
+}
+
+.background-index-73 {
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../pictures/Zurich.jpg")  no-repeat ;
+  background-size: cover;
+}

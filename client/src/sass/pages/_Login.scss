@@ -1,0 +1,81 @@
+.background{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -100;
+}
+
+.separate-containers{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.logo-container{
+  z-index:99;
+  display:flex;
+  align-content: center;
+  margin:-40px 415px 0px 0px;
+}
+
+.logo-container-wIdo{
+  width: 100vw;
+  text-align: end;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100vh; 
+}
+
+.index-title, .login, .sign {
+  margin-left: 50px;
+  margin-top: 100px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 20px; 
+}
+
+.index-title, .background, .login, .sign {
+  position: absolute;
+  top: 0;
+  left: 0; 
+}
+
+.login, .sign {
+  width: 30vw; 
+}
+
+.sign-text, .login-text {
+  font-size: 60px;
+  margin: 10px 0px 20px 20px; 
+}
+
+.username, .pass, .email, .name {
+  text-align: initial;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 10px 0px;
+}
+
+.btn-signup {
+  padding: 8px;
+  margin-left: 50px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: white; 
+}
+
+.container-btn-signup {
+  display: wrap;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 20px 50px 20px 0px; 
+}
+
+.advise-login {
+  margin: 0px 50px;
+}

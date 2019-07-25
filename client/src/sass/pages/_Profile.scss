@@ -1,0 +1,25 @@
+.content-adapt {
+  margin: 0px 0px 0px 80px; 
+}
+
+.container-profile {
+  display: flex;
+  flex-direction: row;
+  padding-top: 60px;
+  margin-bottom: 50px;
+}
+
+.profile{
+  height: 100px;
+  width: 100px;
+  border-radius: 150px;
+}
+
+.data-container{
+  margin-left: 50px;
+}
+
+.link-profile{
+  text-decoration: none;
+  color:black;
+}
