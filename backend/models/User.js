@@ -8,6 +8,7 @@ const userSchema = new Schema({
   email: String,
   phone: String,
   address: String,
+  country: String,
   range: {
     type: String,
     enum: ["Neighborhood","Curious","Adventurous","Jet Lag","Willy Fog"],

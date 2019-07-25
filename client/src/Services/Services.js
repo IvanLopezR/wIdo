@@ -8,9 +8,8 @@ export default class AuthServices {
     })
   }
 
-  signup = (username, password, name, email) => {
-    debugger
-    return this.service.post('/signup', { username, password, name, email })
+  signup = (username, password, name, email, country) => {
+    return this.service.post('/signup', { username, password, name, email, country })
       .then(response => response.data);
   }
 
@@ -20,7 +19,7 @@ export default class AuthServices {
   }
 
   loggedIn = () => {
-    return this.service.get('/userData')
+    return this.service.get('/loggedin')
       .then(response => response.data);
   }
 

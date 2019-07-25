@@ -10,14 +10,8 @@ class SimpleMap extends Component {
     }
   }
 
-  cli(a,b){
-    // document.querySelector('#map-id').addListener('click', function(event) {
-      // console.log(event.latLng.lat() + ", " + event.latLng.lng());
-      console.log("❤️")
+  cli(a){
       console.log(a)
-      console.log(b)
-    // })
-
   }
 
   setMapProperties(map, maps, cordenada) {

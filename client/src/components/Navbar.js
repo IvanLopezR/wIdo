@@ -22,10 +22,10 @@ render() {
       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
         <MDBNavbarNav left>
           <MDBNavItem active>
-            <MDBNavLink to="#!">Home</MDBNavLink>
+            <MDBNavLink to="Home">Home</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!">Profile</MDBNavLink>
+            <MDBNavLink to="Profile">Profile</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to="#!">Manager Map</MDBNavLink>
@@ -70,7 +70,7 @@ render() {
                 <MDBDropdownItem>Change Password</MDBDropdownItem>
                 <hr></hr>
                 <MDBDropdownItem>Invite Friends</MDBDropdownItem>
-                <MDBDropdownItem>About</MDBDropdownItem>
+                <MDBDropdownItem>About Us</MDBDropdownItem>
                 <hr></hr>
                 <MDBDropdownItem onClick={this.props.logout}>Logout</MDBDropdownItem>
               </MDBDropdownMenu>

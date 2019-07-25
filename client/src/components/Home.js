@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom';
 import '../sass/main.scss'
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SimpleMap from './Map';
 import axios from "axios";
 
-export default class Profile extends Component {
+export default class Home extends Component {
 constructor(props){
   super(props);
   this.state = {
@@ -14,7 +15,6 @@ constructor(props){
 }
 
 getCountry = () =>{
-    console.log(this.props.country)
     axios.get(`https://restcountries.eu/rest/v2/alpha/${this.props.country}`)
     .then(responseFromApi => {
       const country = responseFromApi.data
@@ -36,25 +36,22 @@ getCountry = () =>{
         <div className="content-adapt">
           <div className="container-profile">
             <div>
-              <a href="/auth/picture"><img className="profile" src={this.props.imgName} alt={this.props.imgName} /></a>
+            <Link to={"../profile"}><img className="profile" src={this.props.imgName} alt={this.props.imgName} /></Link>
             </div>
             <div className="data-container">
-              <h2>Name: {this.props.name}</h2>
-              <h3>User name: {this.props.username}</h3>
-              <h3>Nacionality: {this.state.name}</h3>
-              <h3>Address: {this.props.address}</h3>
-              <h3>Email: {this.props.email}</h3>
-              <h3>Phone: {this.props.phone}</h3>
+              <img src={this.state.flag} className="flag-address" alt={this.state.name}></img> 
+              <h2><Link className="link-profile" to={"../profile"}>{this.props.name}</Link></h2>
               <h5 class="info-profile">Level: {this.props.range} <span className="separator-info-profile"></span> Friends: {this.props.friends.length}</h5>
               <h5 class="info-profile conquered-countries">Conquered Countries: <img src={this.state.flag} alt={this.state.name} className="flag"></img></h5>
             </div>
           </div>
-          {/* <div className="map-profile">
+          <div className="map-profile">
             <SimpleMap API_KEY={process.env.REACT_APP_GOOGLEMAPSAPIKEY}></SimpleMap>
-          </div> */}
+          </div>
         </div>
         <Footer></Footer>
       </div>
     )
   }
 }
+

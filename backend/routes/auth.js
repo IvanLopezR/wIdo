@@ -48,6 +48,7 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
   const name = req.body.name;
   const email = req.body.email;
+  const country = req.body.country;
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let token = '';
   for (let i = 0; i < 25; i++) {
@@ -72,6 +73,7 @@ router.post("/signup", (req, res, next) => {
       email,
       phone: "",
       address: "Madrid, España",
+      country: country,
       imgName: "https://image.flaticon.com/icons/svg/149/149071.svg",
       token: token,
     });
@@ -110,8 +112,6 @@ router.get("/confirm/:token", (req, res) => {
 router.get('/loggedin', (req, res, next) => {
   if (req.user) {
     res.status(200).json(req.user);
-  } else {
-    next(new Error('Not logged in'))
   }
 })
 
