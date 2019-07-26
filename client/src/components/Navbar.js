@@ -28,13 +28,16 @@ render() {
             <MDBNavLink to="Profile">Profile</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!">Manager Map</MDBNavLink>
+            <MDBNavLink to="Map_Board">Map Board</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!">Friends</MDBNavLink>
+            <MDBNavLink to="Friends">Friends</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!">Community</MDBNavLink>
+            <MDBNavLink to="Community">Community</MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem>
+            <MDBNavLink to="Countries">Countries</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBDropdown>
@@ -66,11 +69,11 @@ render() {
                 <MDBIcon icon="user" />
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem>Edit Profile</MDBDropdownItem>
-                <MDBDropdownItem>Change Password</MDBDropdownItem>
+                <MDBDropdownItem href="Edit_Profile">Edit Profile</MDBDropdownItem>
+                <MDBDropdownItem href="Password">Change Password</MDBDropdownItem>
                 <hr></hr>
-                <MDBDropdownItem>Invite Friends</MDBDropdownItem>
-                <MDBDropdownItem>About Us</MDBDropdownItem>
+                <MDBDropdownItem href="Invite">Invite Friends</MDBDropdownItem>
+                <MDBDropdownItem href="About_Us">About Us</MDBDropdownItem>
                 <hr></hr>
                 <MDBDropdownItem onClick={this.props.logout}>Logout</MDBDropdownItem>
               </MDBDropdownMenu>
