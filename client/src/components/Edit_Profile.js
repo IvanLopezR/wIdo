@@ -33,7 +33,6 @@ export default class Edit_Profile extends Component {
   }
 
   handleChangeName = (event) => {
-
     this.setState({
       name: event.target.value
     })

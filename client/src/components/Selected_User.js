@@ -51,7 +51,7 @@ export default class Selected_User extends Component {
                         <div className="data-container">
                             <Link to={"/country/" + this.state.users.alpha3Code} ><img src={this.state.users.flag} className="flag-address" alt={this.state.users.name}></img></Link>
                             <h2><Link className="link-profile" to={"../profile"}>{this.state.users.name}</Link></h2>
-                            <h5 className="info-profile">Level: {this.state.users.range} <span className="separator-info-profile"></span> Friends: {this.state.users.friends}</h5>
+                            <h5 className="info-profile">Level: {this.state.users.range} <span className="separator-info-profile"></span> Following: {this.state.users.following} <span className="separator-info-profile"></span> Followers: {this.state.users.followers}</h5>
                             <h5 className="info-profile conquered-countries">Conquered Countries: <Link to={"/country/" + this.state.users.alpha3Code} ><img src={this.state.users.flag} alt={this.state.users.name} className="flag"></img></Link></h5>
                         </div>
                     </div>

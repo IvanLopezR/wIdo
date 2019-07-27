@@ -32,7 +32,7 @@ render() {
             <MDBNavLink to="/Map_Board">Map Board</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="/Friends">Friends</MDBNavLink>
+            <MDBNavLink to="/Following">Following</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to="/Community">Community</MDBNavLink>

@@ -43,6 +43,34 @@ router.get("/signup", (req, res, next) => {
   res.render("/login");
 });
 
+router.post("/changePassword", (req, res, next) => {
+  const passwordNew = req.body.passwordNew;
+  const passwordNew2 = req.body.passwordNew2;
+  const password = req.body.password;
+  const id = req.user._id;
+  console.log(password)
+  console.log(passwordNew)
+  console.log(passwordNew2)
+  console.log(req.user);
+  debugger;
+  if (passwordNew !== passwordNew2) {
+    res.render('auth/security', { errorMessage: "Write different password." });
+    return
+  }
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(passwordNew, salt);
+  User
+    .findByIdAndUpdate(id, {
+      password: hashPass,
+    })
+    .then(updatedData => {
+      res.redirect('/profile');
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+});
+
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;

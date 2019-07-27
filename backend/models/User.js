@@ -16,7 +16,8 @@ const userSchema = new Schema({
   },
   countries: [],
   places: [],
-  friends: [],
+  following: [],
+  followers: [],
   imgName: String,
   token: String,
   status: {

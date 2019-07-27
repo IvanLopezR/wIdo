@@ -36,7 +36,7 @@ getCountry = () =>{
             <div className="data-container">
             <Link to={"/country/" + this.state.alpha3Code} ><img src={this.state.flag} className="flag-address" alt={this.state.name}></img></Link>
               <h2><Link className="link-profile" to={"../profile"}>{this.props.name}</Link></h2>
-              <h5 className="info-profile">Level: {this.props.range} <span className="separator-info-profile"></span> Friends: {this.props.friends.length}</h5>
+              <h5 className="info-profile">Level: {this.props.range} <span className="separator-info-profile"></span> Following: {this.props.following.length} <span className="separator-info-profile"></span> Followers: {this.props.followers.length}</h5>
               <h5 className="info-profile conquered-countries">Conquered Countries: <Link to={"/country/" + this.state.alpha3Code} ><img src={this.state.flag} alt={this.state.name} className="flag"></img></Link></h5>
             </div>
           </div>
