@@ -1,57 +1,53 @@
 import React, { Component } from 'react';
 import Footer from './Footer';
-import Navbar from './Navbar';
-import axios from "axios";
+import User from './User';
+import UserServices from "../Services/UserService"
 
 export default class Community extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            countries: []
+            users: []
         };
-    }
 
-    getCountries = () => {
-        axios.get(`https://restcountries.eu/rest/v2`)
-            .then(responseFromApi => {
-                const country = responseFromApi.data
-                this.setState({
-                    ...this.state,
-                    countries: country
-                })
-            })
+        this.service = new UserServices();
     }
 
     componentDidMount() {
-        this.getCountries();
+        this.service.allUsers()
+            .then(allUsers => {
+                this.setState({
+                    ...this.state,
+                    users: allUsers
+                })
+            });
     }
 
-    searchCountry(e){
-        e = e.target.value.slice(0,1).toUpperCase()+e.target.value.slice(1,e.length);
-        let newState = {...this.state};
-        let findCountry = newState.countries.filter(ele => ele.name.indexOf(e)
-         === 0);
+    searchUser(e) {
+        e = e.target.value.slice(0, 1).toUpperCase() + e.target.value.slice(1, e.length);
+        let newState = { ...this.state };
+        let findUsers = newState.users.filter(ele => ele.name.indexOf(e)
+            === 0);
         this.setState({
-          ...this.state,
-          countries : findCountry
+            ...this.state,
+            users: findUsers
         }
-        , 
-        () => {
-          this.state.countries = [...newState.countries]
-        }
+            ,
+            () => {
+                this.state.users = [...newState.users]
+            }
         );
-      }
+    }
 
     render() {
         return (
             <div className={'background-general background-index-62'}>
-                <Navbar logout={this.props.logout}></Navbar>
                 <div className="content-adapt">
-                    <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchCountry(e)}></input>
+                    <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchUser(e)}></input>
                     <div className="container-profile">
                         <div className="countries">
-                            {this.state.countries.map((feature, idx) => {
-                                // return <Country {...feature} key={idx} />
+                            {this.state.users.map((feature, idx) => {
+                                return <User {...feature} key={idx} />
                             })}
                         </div>
                     </div>

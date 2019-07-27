@@ -1,15 +1,57 @@
 .container-edit{
     padding-top: 40px;
-    margin-bottom: 50px;
+    margin-left: 50px;
+    display:flex;
+    flex-direction: row;
 }
 
 .btn-edit{
     padding: 8px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: white;
+    border-radius: 5px;
+    margin-top: 30px;
+    background-color: white;
 }
 
 .link-edit{
-    margin-left: 30px; 
+    margin-top: 20px; 
+}
+
+.picture-edit{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-separator{
+    margin-left: 80px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inputs-edit{
+    max-width: 350px;
+}
+
+.wrap-edit-data{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.separator-data-edit{
+    margin-right: 60px;
+}
+
+.username-edit{
+    margin-top:10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.picture-change{
+    margin-bottom: 40px;
+}
+
+.input-change-picture{
+    margin-left: 50px;
 }

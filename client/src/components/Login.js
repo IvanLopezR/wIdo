@@ -30,7 +30,7 @@ class Login extends Component {
   }
 
   render() {
-    if (this.state.logged) return <Redirect to={"/Profile"} />
+    if (this.state.logged) return <Redirect to={"/Home"} />
     return (
       <div className="background">
         <video loop muted autoPlay className="fullscreen-bg__video">

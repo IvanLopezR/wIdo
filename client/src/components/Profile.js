@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../sass/main.scss'
-import Navbar from './Navbar';
 import Footer from './Footer';
 import axios from "axios";
 
@@ -13,12 +13,10 @@ export default class Profile extends Component {
   }
 
   getCountry = () => {
-    console.log(this.props.country)
     axios.get(`https://restcountries.eu/rest/v2/alpha/${this.props.country}`)
       .then(responseFromApi => {
         const country = responseFromApi.data
         this.setState(country);
-        console.log(this.state);
       })
   }
 
@@ -27,11 +25,8 @@ export default class Profile extends Component {
   }
 
   render() {
-    console.log(this.props.country)
-    console.log(this.state);
     return (
       <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
-        <Navbar logout={this.props.logout}></Navbar>
         <div className="content-adapt">
           <div className="container-profile">
             <div>
@@ -47,7 +42,7 @@ export default class Profile extends Component {
                 <li>Phone: {this.props.phone}</li>
                 <li>Level: {this.props.range}</li> 
                 <li>Friends: {this.props.friends.length}</li>
-                <li class="info-profile conquered-countries">Conquered Countries: <img src={this.state.flag} alt={this.state.name} className="flag"></img></li>
+                <li className="info-profile conquered-countries">Conquered Countries: <Link to={"/country/" + this.state.alpha3Code} ><img src={this.state.flag} alt={this.state.name} className="flag"></img></Link></li>
               </ul>
             </div>
           </div>

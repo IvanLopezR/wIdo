@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AuthServices from '../Services/Services';
 import logo from '../location-logo.png';
 import logowIdo from '../logo-wIdo.png';

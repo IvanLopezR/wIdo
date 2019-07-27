@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from './Navbar';
 import Footer from './Footer';
 import Country from './Country';
 import axios from "axios";
@@ -46,7 +45,6 @@ export default class Countries extends Component {
     render() {
         return (
             <div className={'background-general background-index-62'}>
-                <Navbar logout={this.props.logout}></Navbar>
                 <div className="content-adapt">
                     <input className="search-country" placeholder="Find country by name..." onChange={(e) => this.searchCountry(e)}></input>
                     <div className="container-profile">

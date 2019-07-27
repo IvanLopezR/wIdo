@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../sass/main.scss'
-import Navbar from './Navbar';
 import Footer from './Footer';
 import SimpleMap from './Map';
 import axios from "axios";
@@ -19,7 +18,6 @@ getCountry = () =>{
     .then(responseFromApi => {
       const country = responseFromApi.data
       this.setState(country);
-      console.log(this.state);   
     })
   }
 
@@ -28,20 +26,18 @@ getCountry = () =>{
 }
 
   render() {
-    console.log(this.props);
     return (
       <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
-        <Navbar logout={this.props.logout}></Navbar>
         <div className="content-adapt">
           <div className="container-profile">
             <div>
             <Link to={"../profile"}><img className="profile" src={this.props.imgName} alt={this.props.imgName} /></Link>
             </div>
             <div className="data-container">
-            <Link to={"/" + this.state.alpha3Code} ><img src={this.state.flag} className="flag-address" alt={this.state.name}></img></Link>
+            <Link to={"/country/" + this.state.alpha3Code} ><img src={this.state.flag} className="flag-address" alt={this.state.name}></img></Link>
               <h2><Link className="link-profile" to={"../profile"}>{this.props.name}</Link></h2>
-              <h5 class="info-profile">Level: {this.props.range} <span className="separator-info-profile"></span> Friends: {this.props.friends.length}</h5>
-              <h5 class="info-profile conquered-countries">Conquered Countries: <Link to={"/" + this.state.alpha3Code} ><img src={this.state.flag} alt={this.state.name} className="flag"></img></Link></h5>
+              <h5 className="info-profile">Level: {this.props.range} <span className="separator-info-profile"></span> Friends: {this.props.friends.length}</h5>
+              <h5 className="info-profile conquered-countries">Conquered Countries: <Link to={"/country/" + this.state.alpha3Code} ><img src={this.state.flag} alt={this.state.name} className="flag"></img></Link></h5>
             </div>
           </div>
           <div className="map-profile">

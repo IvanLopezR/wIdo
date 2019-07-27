@@ -10,10 +10,13 @@ import Countries from './components/Countries';
 import Friends from './components/Friends';
 import Map_Board from './components/Map_Board';
 import About_Us from './components/About_Us';
+import Navbar from './components/Navbar';
 import Invite from './components/Invite';
 import Password from './components/Password';
+import Picture from './components/Picture';
 import Edit_Profile from './components/Edit_Profile';
 import Selected_Country from './components/Selected_Country';
+import Selected_User from './components/Selected_User';
 import AuthServices from './Services/Services';
 
 class App extends Component {
@@ -60,6 +63,7 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <React.Fragment>
+          <Navbar logout={this.logout}></Navbar>
           <Switch>
             <Route exact path='/Home' render={() => <Home {...this.state.loggedInUser} logout={this.logout} />} />
             <Route exact path='/Profile' render={() => <Profile {...this.state.loggedInUser} logout={this.logout} />} />
@@ -72,9 +76,15 @@ class App extends Component {
             <Route exact path='/About_Us' render={() => <About_Us {...this.state.loggedInUser} logout={this.logout} />} />
             <Route exact path='/Invite' render={() => <Invite {...this.state.loggedInUser} logout={this.logout} />} />
             <Route exact path='/Password' render={() => <Password {...this.state.loggedInUser} logout={this.logout} />} />
-            <Route exact path='/:chosenCountry' render={(props) => {
+            <Route exact path='/Picture' render={() => <Picture {...this.state.loggedInUser} logout={this.logout} />} />
+            <Route exact path='/country/:chosenCountry' render={(props) => {
                     var chosenCountry = props.match.params.chosenCountry
-                    return <Selected_Country coun={chosenCountry}></Selected_Country>
+                    return <Selected_Country coun={chosenCountry} logout={this.logout}></Selected_Country>
+            }}        
+            />
+            <Route exact path='/user/:chosenUser' render={(props) => {
+                    var chosenUser = props.match.params.chosenUser;
+                    return <Selected_User us={chosenUser} logout={this.logout}></Selected_User>
             }}        
             />
           </Switch>

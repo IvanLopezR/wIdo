@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import image from "../logo-wIdo-navbar.png";
+import "../sass/main.scss"
 
 class NavbarPage extends Component {
 state = {
@@ -22,22 +23,22 @@ render() {
       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
         <MDBNavbarNav left>
           <MDBNavItem active>
-            <MDBNavLink to="Home">Home</MDBNavLink>
+            <MDBNavLink to="/Home">Home</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="Profile">Profile</MDBNavLink>
+            <MDBNavLink to="/Profile">Profile</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="Map_Board">Map Board</MDBNavLink>
+            <MDBNavLink to="/Map_Board">Map Board</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="Friends">Friends</MDBNavLink>
+            <MDBNavLink to="/Friends">Friends</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="Community">Community</MDBNavLink>
+            <MDBNavLink to="/Community">Community</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="Countries">Countries</MDBNavLink>
+            <MDBNavLink to="/Countries">Countries</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBDropdown>
@@ -69,11 +70,11 @@ render() {
                 <MDBIcon icon="user" />
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href="Edit_Profile">Edit Profile</MDBDropdownItem>
-                <MDBDropdownItem href="Password">Change Password</MDBDropdownItem>
+                <MDBDropdownItem href="/Edit_Profile">Edit Profile</MDBDropdownItem>
+                <MDBDropdownItem href="/Password">Change Password</MDBDropdownItem>
                 <hr></hr>
-                <MDBDropdownItem href="Invite">Invite Friends</MDBDropdownItem>
-                <MDBDropdownItem href="About_Us">About Us</MDBDropdownItem>
+                <MDBDropdownItem href="/Invite">Invite Friends</MDBDropdownItem>
+                <MDBDropdownItem href="/About_Us">About Us</MDBDropdownItem>
                 <hr></hr>
                 <MDBDropdownItem onClick={this.props.logout}>Logout</MDBDropdownItem>
               </MDBDropdownMenu>

@@ -1,12 +1,20 @@
-.navbar {
-  background-color: rgba(237, 56, 51, 0.658);
-  position: fixed;
-  left: 0;
-  top: 0;
- }
+// .navbar {
+//   background-color: rgba(237, 56, 51, 0.658);
+//   position: fixed;
+//   left: 0px;
+//   top: 0
+// }
 
- .white-text{
-  color: #343A40;
+nav{
+  background-color: rgba(235, 14, 6, 0.658);
+  background: #014464!important;
+  background: -moz-linear-gradient(top, #0a0a0aa8, #b6b3b3)!important;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f80c03a8), to(#7a5151))!important; 
+  // /*padding: 4px, 16px, 4px, 16px;*/ 
+}
+
+ .dropdown-menu.show.dropdown-default{
+  left: -145px;
  }
 
  .logo-navbar{
