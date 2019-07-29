@@ -9,7 +9,6 @@ export default class Community extends Component {
         this.state = {
             users: []
         };
-
         this.service = new UserServices();
     }
 

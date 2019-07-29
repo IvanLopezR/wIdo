@@ -1,10 +1,13 @@
 @import "./base/reset.scss";
 
+@import "./pages/Index";
 @import "./pages/_Login";
 @import "./pages/_Profile";
 @import "./pages/Edit-profile";
 @import "./pages/Countries";
 @import "./pages/Community";
+@import "./pages/About-us";
+@import "./pages/Invite";
 
 @import "./components/_background";
 @import "./components/navbar";

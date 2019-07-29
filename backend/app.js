@@ -69,6 +69,12 @@ app.use('/auth', authRoutes);
 
 const userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
-      
+
+const placeRoutes = require('./routes/place');
+app.use('/place', placeRoutes);
+
+const pictRoutes = require('./routes/file-upload-routes');
+app.use('/routes', pictRoutes);
+
 
 module.exports = app;

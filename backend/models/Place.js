@@ -3,6 +3,7 @@ const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
   title: String,
+  timestamps:Date,
   username:{ type: Schema.Types.ObjectId, ref: "User" },
   coordinates:{
       lng:Number,

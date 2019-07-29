@@ -48,26 +48,26 @@ router.post("/changePassword", (req, res, next) => {
   const passwordNew2 = req.body.passwordNew2;
   const password = req.body.password;
   const id = req.user._id;
-  console.log(password)
-  console.log(passwordNew)
-  console.log(passwordNew2)
-  console.log(req.user);
-  debugger;
   if (passwordNew !== passwordNew2) {
-    res.render('auth/security', { errorMessage: "Write different password." });
+    // res.render('auth/security', { errorMessage: "Write different password." });
     return
   }
-  const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(passwordNew, salt);
   User
-    .findByIdAndUpdate(id, {
-      password: hashPass,
-    })
-    .then(updatedData => {
-      res.redirect('/profile');
-    })
-    .catch((err) => {
-      console.log(err)
+    .findById(id)
+    .then(foundUser => {
+      if (!bcrypt.compareSync(password, foundUser.password)) {
+        // res.render('auth/security', { errorMessage: "Wrong password" });
+        return;
+      }
+      const salt = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(passwordNew, salt);
+      User
+        .findByIdAndUpdate(id, {
+          password: hashPass,
+        })
+        .then(updatedData => {
+          res.render('auth/security', { successMessage: "Password has been changed." });
+        })
     })
 });
 
@@ -134,6 +134,20 @@ router.get("/confirm/:token", (req, res) => {
       res.redirect("/auth/login")
     }).catch((err) => {
       console.log(err)
+    })
+});
+
+router.post('/invite', (req, res, next) => {
+    const emailFriend = req.body.emailFriend;
+    const name = req.user.name;
+    transporter.sendMail({
+      from: '"wIdo📍" <process.env.USER>',
+      to: emailFriend,
+      subject: `${name} invite you to participate in wIdo - Social Network Locations 📌`,
+      text: 'Awesome Message',
+      html: `<b>Start today discovering the favourite places of your friends and share your's</b>
+              <a
+              href="http://localhost:3000/login">Click here</a> and complete in few minutes the form to be part of wIdo, the great Social Netword Location.`
     })
 });
 

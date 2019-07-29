@@ -35,6 +35,9 @@ render() {
             <MDBNavLink to="/Following">Following</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
+            <MDBNavLink to="/Followers">Followers</MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem>
             <MDBNavLink to="/Community">Community</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Footer from './Footer';
-import axios from 'axios';
+import UserServices from "../Services/UserService"
 
 export default class Edit_Profile extends Component {
   constructor(props) {
     super(props);
+    this.userId = this.props._id;
     this.state = {
       name: this.props.name,
       address: this.props.address,
@@ -13,6 +14,7 @@ export default class Edit_Profile extends Component {
       email: this.props.email,
       phone: this.props.phone
     }
+    this.service = new UserServices();
   }
 
   handleFormSubmit = (event) => {
@@ -21,15 +23,29 @@ export default class Edit_Profile extends Component {
     const country = this.state.country;
     const email = this.state.email;
     const phone = this.state.phone;
+    const id = this.userId;
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/user/editProfile/${this.props._id}`, { name, address, country, email, phone })
-      .then(() => {
-        this.props.getTheProject();
-        this.props.history.push('/projects');
-      })
-      .catch(error => console.log(error))
+    this.service.editProfile(name, address, country, email, phone, id)
+      .then(selectUser => {
+        this.setState({
+          // ...this.state,
+          name: selectUser.name,
+          address: selectUser.address,
+          country: selectUser.country,
+          email: selectUser.email,
+          phone: selectUser.phone
+        })
+      });
+
+    // axios.put(`http://localhost:5000/user/editProfile/${this.props._id}`, { name, address, country, email, phone })
+    //   .then(() => {
+    //     this.props.getTheProject();
+    //     this.props.history.push('/projects');
+    //     return (<Redirect to={`/profile`}/>)
+    //   })
+    //   .catch(error => console.log(error))
   }
 
   handleChangeName = (event) => {

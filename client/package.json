@@ -13,8 +13,10 @@
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
+    "react-instagram-login": "^1.3.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-social-login": "^3.4.4"
   },
   "scripts": {
     "start": "REACT_APP_GOOGLEMAPSAPIKEY=AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM react-scripts start",

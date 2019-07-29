@@ -3,38 +3,13 @@ import AuthServices from '../Services/Services';
 import { Link, Redirect } from 'react-router-dom';
 import logo from '../location-logo.png';
 import logowIdo from '../logo-wIdo.png';
-// import InstagramLogin from 'react-instagram-login';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { username: '', password: '', logged: false, error: '' };
-    this.service = new AuthServices();
-  }
-
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-    this.service.login(username, password)
-      .then(response => {
-        this.setState({ username: "", password: "", logged: true }, () => this.props.getUser(response));
-        this.props.getUser(response)
-      })
-      .catch(error => console.log(error))
-  }
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
+export default class Index extends Component {
   render() {
-    if (this.state.logged) return <Redirect to={"/Home"} />
     return (
       <div className="background">
         <video loop muted autoPlay className="fullscreen-bg__video">
-          <source src="./videos/Toronto.mp4" type="video/mp4" />
+          <source src="./videos/Guanajuato.mp4" type="video/mp4" />
         </video>
         <div className="logo-container-wIdo">
           <img src={logowIdo} alt="logo wIdo" className="logo-wIdo"></img>
@@ -44,6 +19,20 @@ class Login extends Component {
             <img src={logo} alt="location" className="App-logo"></img>
           </div>
           <div className="login">
+            <h1 className="sign-text">The Great Social Network of Locations</h1>
+            <h3 className="sub-index">Start today and discover the favourite people's places around the world.</h3>
+            <p className="index-account-message">Don't have account?
+              <Link to={"/signup"}> Create new account</Link>
+          </p>
+          </div>
+          
+        </div>
+      </div>
+    )
+  }
+}
+
+{/* <div className="login">
             <h2 className="sign-text">Login</h2>
             <form onSubmit={this.handleFormSubmit}>
               <div className="username form-group">
@@ -62,18 +51,11 @@ class Login extends Component {
                   onSuccess={responseInstagram}
                   onFailure={responseInstagram}
                 /> */}
-              </div>
-            </form>
-            <div className="advise-login">
-              <p className="account-message">Don't have account?
-              <Link to={"/signup"}> Create new account</Link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Login;
+          //     </div>
+          //   </form>
+          //   <div className="advise-login">
+          //     <p className="account-message">Don't have account?
+          //     <Link to={"/signup"}> Create new account</Link>
+          //     </p>
+          //   </div>
+          // </div> */}

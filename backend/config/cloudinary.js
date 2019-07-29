@@ -1,8 +1,3 @@
-// config/ cloudinary.js
-
-//remember, we have to import multer-storage-cloudinary in order to work with cloudinary
-//remember to create an account in cloudinary
-//then you'll need the cloud name, the cloudinary key and the secret
 const cloudinary = require('cloudinary');
 const cloudinaryStorage = require('multer-storage-cloudinary');
 const multer = require('multer');
@@ -14,14 +9,14 @@ cloudinary.config({
 });
 
 var storage = cloudinaryStorage({
-  cloudinary: cloudinary,
-  folder: 'some-folder-name', // The name of the folder in cloudinary
+  cloudinary,
+  folder: 'wIdo-gallery', // The name of the folder in cloudinary
   allowedFormats: ['jpg', 'png'],
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
+  // params: { resource_type: 'raw' }, => this is in case you want to upload other type of files, not just images
+  filename: function (req, res, cb) {
+    cb(null, res.originalname); // The file on cloudinary would have the same name as the original file name
   }
 });
 
-const parser = multer({ storage: storage });
-
-module.exports = parser;
+const uploader = multer({ storage });
+module.exports = uploader;

@@ -18,8 +18,12 @@ export default class AuthServices {
       .then(response => response.data);
   }
 
+  invite = (emailFriend) => {
+    return this.service.post('/invite', { emailFriend })
+      .then(response => response.data);
+  }
+
   changePassword = (passwordNew, passwordNew2, password) => {
-    console.log("Entro Services");
     return this.service.post('/changePassword', { passwordNew, passwordNew2, password })
     .then(response => response.data)
     .catch((err) => {

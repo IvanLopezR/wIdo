@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import '../sass/main.scss'
 import Footer from './Footer';
-import SimpleMap from './Map';
+import Map from './Map';
 import axios from "axios";
 
 export default class Home extends Component {
@@ -41,7 +41,7 @@ getCountry = () =>{
             </div>
           </div>
           <div className="map-profile">
-            <SimpleMap API_KEY={process.env.REACT_APP_GOOGLEMAPSAPIKEY}></SimpleMap>
+            <Map></Map>
           </div>
         </div>
         <Footer></Footer>
