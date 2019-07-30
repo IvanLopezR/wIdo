@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.92f84e19.chunk.css",
+    "main.css": "/static/css/main.9d58a04c.chunk.css",
     "main.js": "/static/js/main.31ec93b2.chunk.js",
     "main.js.map": "/static/js/main.31ec93b2.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
@@ -9,10 +9,10 @@
     "static/js/2.68b75a78.chunk.js": "/static/js/2.68b75a78.chunk.js",
     "static/js/2.68b75a78.chunk.js.map": "/static/js/2.68b75a78.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.64a35425329b46c6bfdcf9670b34d612.js": "/precache-manifest.64a35425329b46c6bfdcf9670b34d612.js",
+    "precache-manifest.d28bd81965e85edb6f50885c1a7f0d0f.js": "/precache-manifest.d28bd81965e85edb6f50885c1a7f0d0f.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.22a7d4ef.chunk.css.map": "/static/css/2.22a7d4ef.chunk.css.map",
-    "static/css/main.92f84e19.chunk.css.map": "/static/css/main.92f84e19.chunk.css.map",
+    "static/css/main.9d58a04c.chunk.css.map": "/static/css/main.9d58a04c.chunk.css.map",
     "static/media/main.scss": "/static/media/Zurich.dd1325ae.jpg",
     "static/media/location-logo.png": "/static/media/location-logo.341797e9.png",
     "static/media/logo-wIdo-navbar.png": "/static/media/logo-wIdo-navbar.b9346065.png",
