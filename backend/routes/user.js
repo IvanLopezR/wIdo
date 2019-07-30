@@ -94,4 +94,16 @@ router.post('/things/create', (req, res, next) => {
     })
 });
 
+
+router.post('/findUserPlaces',(req, res, next) => {
+  User
+   .findById(req.body.userId)
+   .populate('places')
+   .then(user => {
+     console.log(user)
+     res.json(user)
+    })
+   .catch(err => console.log(err))
+});
+
 module.exports = router;

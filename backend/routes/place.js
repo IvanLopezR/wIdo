@@ -34,7 +34,7 @@ router.post('/create', (req, res, next) => {
       },
       type: req.body.type,
       author: req.body.author,
-      timestamps: new Date().toISOString().slice(0, 10),
+      timestamps: req.body.timestamps,
     })
     .then(createdTask => {
       User.findByIdAndUpdate(req.user._id,{$push: {places: createdTask._id}},{new:true})
@@ -46,6 +46,7 @@ router.post('/create', (req, res, next) => {
         )
     })
 })
+
 
   // Place
   //   Place.find().then(places => {

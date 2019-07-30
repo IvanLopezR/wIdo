@@ -93,7 +93,7 @@ class App extends Component {
             />
             <Route exact path='/user/:chosenUser' render={(props) => {
               var chosenUser = props.match.params.chosenUser;
-              return <Selected_User us={chosenUser}></Selected_User>
+              return <Selected_User us={chosenUser} {...this.state.loggedInUser}></Selected_User>
             }}
             />
           </Switch>

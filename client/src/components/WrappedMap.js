@@ -4,16 +4,19 @@ import { Marker, InfoWindow } from "react-google-maps";
 
 const WrappedMap = withScriptjs(withGoogleMap((props) => {
     const [selectedMarker, setSelectedMarker] = useState(null);
+    console.log(props.centerMap)
     return (
         <GoogleMap
             defaultZoom={3}
             center={
-                { lat: 40.416775, lng: -3.703790 }
+                { lat: props.centerMap.lat, lng: props.centerMap.lng }
             }
             onClick={props.newMarker}
         >
             {props.markers.map(marker => {
-                return <Marker
+                if(marker.type==="Visit Place"){
+                    return <Marker
+                    animation={4}
                     key={marker._id}
                     position={
                         { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
@@ -22,6 +25,24 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
                         setSelectedMarker(marker);
                     }}
                 />
+                }
+                else{
+                    return <Marker
+                    animation={4}
+                    key={marker._id}
+                    position={
+                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                    }
+                    onClick={() => {
+                        setSelectedMarker(marker);
+                    }}
+                    icon={{
+                        url:'/food-icon.png',
+                        scaledSize: new window.google.maps.Size(30,42)
+                    }}
+                />
+                }
+                
             })}
             {selectedMarker && (
                 <InfoWindow position={

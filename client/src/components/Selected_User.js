@@ -54,6 +54,9 @@ export default class Selected_User extends Component {
     }
 
     componentDidMount() {
+        if(this.props.us===this.props._id){
+            document.getElementById(this.idBtn).hidden = true; 
+        }
         this.service.selectUser(this.props.us)
             .then(selectUser => {
                 this.setState({
@@ -61,16 +64,12 @@ export default class Selected_User extends Component {
                     users: selectUser
                 })
                 this.getCountry();
-                document.getElementById(this.idBtn).innerHTML = "unfollow";
-                document.getElementById("follow-btn").style.backgroundColor = "red";   
+                // document.getElementById(this.idBtn).innerHTML = "unfollow";
+                // document.getElementById("follow-btn").style.backgroundColor = "red";   
             });
     }
 
     render() {
-        // if(){
-        //    document.getElementById("follow-btn").style.backgroundColor = "red"; 
-            // document.getElementById(this.idBtn).value = "unfollow";
-        // }
         return (
             <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
                 <div className="content-adapt">
@@ -112,7 +111,7 @@ export default class Selected_User extends Component {
                         </div>
                     </div>
                 < div className="map-profile">
-                    <Map></Map>
+                    <Map user={this.props._id}></Map>
                 </div>
             </div>
             <Footer></Footer>

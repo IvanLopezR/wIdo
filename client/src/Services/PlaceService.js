@@ -19,14 +19,14 @@ export default class PlaceServices {
     .then(res => res.data)
   }
 
-  saveNewThing = (title, imgName, lat, lng, type, author) => {
+  saveNewThing = (title, imgName, lat, lng, type, author, timestamps) => {
     console.log(title);
     console.log(imgName);
     console.log(lat);
     console.log(lng);
     console.log(type);
     console.log(author);
-    return this.service.post('/create', { title, imgName, lat, lng, type, author })
+    return this.service.post('/create', { title, imgName, lat, lng, type, author, timestamps })
       .then(res => {
         console.log(res)
 

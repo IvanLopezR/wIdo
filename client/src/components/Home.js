@@ -41,7 +41,7 @@ getCountry = () =>{
             </div>
           </div>
           <div className="map-profile">
-            <Map></Map>
+            <Map user={this.props}></Map>
           </div>
         </div>
         <Footer></Footer>

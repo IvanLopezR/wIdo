@@ -8,21 +8,21 @@ export default class About_Us extends Component {
                 <div className="content-about-us">
                     <div className="about-us">
                         <h3 className="title-about-us">Ironhack Madrid, Iván López Ruiz final project´s.</h3>
-                        <h5>Special thanks to Dani Vicario 🧘‍♂, Sito 🏍, Luca 🇮🇹, Raluca 🍸 and all my Ironhack brothers: </h5>
+                        <h5>Special thanks to Dani Vicario <span>🧘‍</span>, Sito <span>🏍</span>, Luca <span>🇮🇹</span>, Raluca <span>🍸</span> and all my Ironhack brothers: </h5>
                         <ul className="list-about-us">
-                            <li>Carlos 🎧</li>
-                            <li>Vanesa 👵</li>
-                            <li>Jesús ⛹‍♂</li>
-                            <li>Gabi 🎮</li>
-                            <li>Rubén 🕺</li>
-                            <li>Rafa ⚖</li>
-                            <li>Javi 🏝</li>
-                            <li>Francho 🛴</li>
-                            <li>Sergio 👨‍👩‍👧‍👦</li>
-                            <li>Juan 🇬🇧</li>
-                            <li>Micael 🚂</li>
-                            <li>Miriam 🍕</li>
-                            <li>Agustín ♻</li>
+                            <li>Carlos <span>🎧</span></li>
+                            <li>Vanesa <span>👵</span></li>
+                            <li>Jesús <span>⛹‍</span></li>
+                            <li>Gabi <span>🎮</span></li>
+                            <li>Rubén <span>🕺</span></li>
+                            <li>Rafa <span>⚖</span></li>
+                            <li>Javi <span>🏝</span></li>
+                            <li>Francho <span>🛴</span></li>
+                            <li>Sergio <span> 👨‍👩‍👧‍</span></li>
+                            <li>Juan <span>🇬🇧</span></li>
+                            <li>Micael <span>🚂</span></li>
+                            <li>Miriam <span>🍕</span></li>
+                            <li>Agustín <span>♻</span></li>
                         </ul>
 
                     </div>

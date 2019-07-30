@@ -43,4 +43,9 @@ export default class UserServices {
       .then(res => res.data)
   }
 
+  findUserPlaces = userId => {
+    return this.service.post('/findUserPlaces', {userId})
+    .then(res => res.data)
+  }
+
 }
