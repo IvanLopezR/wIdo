@@ -11,7 +11,7 @@ const userSchema = new Schema({
   },
   type: {
     type: String,
-    enum: ["Food Place","Visit Place"],
+    enum: ["Food Place","Visit Place","Sleep Place","Activity Place"],
     default: 'Visit Place'
   },
   imgName: String,

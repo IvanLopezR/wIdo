@@ -4,6 +4,8 @@ import UserService from "../Services/UserService";
 import WrappedMap from "./WrappedMap";
 import axios from "axios";
 import { withRouter } from 'react-router-dom';
+import { Marker } from "react-google-maps";
+
 
 class MapEdit extends Component {
     constructor(props) {
@@ -20,7 +22,8 @@ class MapEdit extends Component {
             centerCoor: {
                 lat: 40.416775,
                 lng: -3.703790,
-            }
+            },
+            click:null
         };
         this.control = false;
         this.idBtn = "btn-save";
@@ -84,18 +87,29 @@ class MapEdit extends Component {
     }
 
     handleClick = (event) => {
-        var lat = event.latLng.lat(), lng = event.latLng.lng()
-        if (this.control) {
-            document.getElementById(this.idBtn).style.backgroundColor = "green";
-            document.getElementById(this.idBtn).disabled = false;
+        let clicky = <Marker
+        animation={2}
+        position={
+            { lat: event.latLng.lat(), lng: event.latLng.lng()}
         }
-        let newCenterCoor = {lat: lat, lng: lng}
-        this.setState({
-            ...this.state,
-            lat: lat,
-            lng: lng,
-            centerCoor : newCenterCoor 
-        })
+        icon={{
+            url:'/favicon.png',
+            scaledSize: new window.google.maps.Size(30,42)
+        }}/>
+        this.setState({...this.state, click: clicky})
+
+        // var lat = event.latLng.lat(), lng = event.latLng.lng()
+        // if (this.control) {
+        //     document.getElementById(this.idBtn).style.backgroundColor = "green";
+        //     document.getElementById(this.idBtn).disabled = false;
+        // }
+        // let newCenterCoor = {lat: lat, lng: lng}
+        // this.setState({
+        //     ...this.state,
+        //     lat: lat,
+        //     lng: lng,
+        //     centerCoor : newCenterCoor 
+        // })
     }
 
     putPlaceUser(reg) {
@@ -127,8 +141,9 @@ class MapEdit extends Component {
                 document.getElementById(this.pictPlace).value = "";
                 document.getElementById(this.titlePlace).value = "";
                 this.control = false;
-                this.centerCoor.lat = this.state.lat;
-                this.centerCoor.lng = this.state.lng;
+                console.log(this.centerCoor, this.state)
+                this.state.centerCoor.lat = this.state.lat;
+                this.state.centerCoor.lng = this.state.lng;
                 this.getCountry();
                 console.log('added: ', res);
                 this.setState({
@@ -138,6 +153,7 @@ class MapEdit extends Component {
                     imgName: "",
                     timestamps: "",
                     type: "Visit Place",
+                    // isLoading:false,
                     places: res.places,
                 })
             })
@@ -158,7 +174,9 @@ class MapEdit extends Component {
                             <input type="file" id="pict-place" onChange={(e) => this.handleFileUpload(e)} required></input>
                             <select className="form-control input-place" id="select-type" name="type" onChange={(e) => this.handleChange(e)}>
                                 <option value="Visit Place">Visit Place</option>
+                                <option value="Activity Place">Activity Place</option>
                                 <option value="Food Place">Food Place</option>
+                                <option value="Sleep Place">Sleep Place</option>
                             </select>
                             <input className="form-control input-place" placeholder="Title" id="title-place" name="title" onChange={(e) => this.handleChange(e)} required></input>
                         </form>
@@ -170,7 +188,8 @@ class MapEdit extends Component {
                         containerElement={<div style={{ height: `75vh` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         markers={this.state.places}
-                        newMarker={this.handleClick}
+                        clicky={this.state.click}
+                        newMarker={(e)=>{this.handleClick(e)}}
                         centerMap={this.state.centerCoor}
                     ></WrappedMap>
                     <div className="coordinates">

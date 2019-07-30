@@ -13,8 +13,10 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
             }
             onClick={props.newMarker}
         >
+            {props.clicky}
+                    
             {props.markers.map(marker => {
-                if(marker.type==="Visit Place"){
+                if(marker.type==="Activity Place"){
                     return <Marker
                     animation={4}
                     key={marker._id}
@@ -24,9 +26,13 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
                     onClick={() => {
                         setSelectedMarker(marker);
                     }}
+                    icon={{
+                        url:'/activity-icon.png',
+                        scaledSize: new window.google.maps.Size(30,42)
+                    }}
                 />
                 }
-                else{
+                else if(marker.type==="Food Place"){
                     return <Marker
                     animation={4}
                     key={marker._id}
@@ -42,8 +48,37 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
                     }}
                 />
                 }
+                else if(marker.type==="Sleep Place"){
+                    return <Marker
+                    animation={4}
+                    key={marker._id}
+                    position={
+                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                    }
+                    onClick={() => {
+                        setSelectedMarker(marker);
+                    }}
+                    icon={{
+                        url:'/sleep-icon.png',
+                        scaledSize: new window.google.maps.Size(30,42)
+                    }}
+                />
+                }
+                else{
+                    return <Marker
+                    animation={4}
+                    key={marker._id}
+                    position={
+                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                    }
+                    onClick={() => {
+                        setSelectedMarker(marker);
+                    }}
+                />
+                }
                 
             })}
+            
             {selectedMarker && (
                 <InfoWindow position={
                     { lat: selectedMarker.coordinates.lat, lng: selectedMarker.coordinates.lng }
