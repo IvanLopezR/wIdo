@@ -20,7 +20,7 @@
     "react-social-login": "^3.4.4"
   },
   "scripts": {
-    "start": "dotenv -e env.development REACT_APP_GOOGLEMAPSAPIKEY=AIzaSyAzGHDso1aXodTgAxYYmuTHdp9iVdxanhM react-scripts start",
+    "start": "dotenv -e env.development react-scripts start",
     "build": "react-scripts build",
     "build-dev": "dotenv -e .env.development react-scripts build",
     "build-prod": "dotenv -e .env.production react-scripts build",
