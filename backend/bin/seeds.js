@@ -8,7 +8,7 @@ const Place = require("../models/Place");
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/wido', { useNewUrlParser: true })
+  .connect(process.env.ATLASDB, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     User.deleteMany()
