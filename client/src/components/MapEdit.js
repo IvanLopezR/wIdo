@@ -69,9 +69,11 @@ class MapEdit extends Component {
 
     handleFileUpload = e => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
+        console.log(this.state.lat)
         const uploadData = new FormData();
         uploadData.append("imgName", e.target.files[0]);
         this.service.placePicture(uploadData)
+        
             .then(response => {
                 this.setState({ imgName: response.secure_url });
                 this.control = true;
@@ -93,23 +95,23 @@ class MapEdit extends Component {
             { lat: event.latLng.lat(), lng: event.latLng.lng()}
         }
         icon={{
-            url:'/favicon.png',
+            url:'/select-icon.png',
             scaledSize: new window.google.maps.Size(30,42)
         }}/>
         this.setState({...this.state, click: clicky})
 
-        // var lat = event.latLng.lat(), lng = event.latLng.lng()
-        // if (this.control) {
-        //     document.getElementById(this.idBtn).style.backgroundColor = "green";
-        //     document.getElementById(this.idBtn).disabled = false;
-        // }
-        // let newCenterCoor = {lat: lat, lng: lng}
-        // this.setState({
-        //     ...this.state,
-        //     lat: lat,
-        //     lng: lng,
-        //     centerCoor : newCenterCoor 
-        // })
+        var lat = event.latLng.lat(), lng = event.latLng.lng()
+        if (this.control) {
+            document.getElementById(this.idBtn).style.backgroundColor = "green";
+            document.getElementById(this.idBtn).disabled = false;
+        }
+        let newCenterCoor = {lat: lat, lng: lng}
+        this.setState({
+            ...this.state,
+            lat: lat,
+            lng: lng,
+            centerCoor : newCenterCoor 
+        })
     }
 
     putPlaceUser(reg) {

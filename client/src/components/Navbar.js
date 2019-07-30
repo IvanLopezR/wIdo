@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import image from "../logo-wIdo-navbar.png";
@@ -49,9 +50,9 @@ render() {
                 <div className="d-none d-md-inline">Graphics</div>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href="#!">Users More Traveler</MDBDropdownItem>
-                <MDBDropdownItem href="#!">Most Visited Countries</MDBDropdownItem>
-                <MDBDropdownItem href="#!">More Follower Users</MDBDropdownItem>
+                <Link className="link-navbar" to="#!"><MDBDropdownItem>Users More Traveler</MDBDropdownItem></Link>
+                <Link className="link-navbar" to="#!"><MDBDropdownItem>Most Visited Countries</MDBDropdownItem></Link>
+                <Link className="link-navbar" to="#!"><MDBDropdownItem>More Follower Users</MDBDropdownItem></Link>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
@@ -73,11 +74,11 @@ render() {
                 <MDBIcon icon="user" />
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href="/Edit_Profile">Edit Profile</MDBDropdownItem>
-                <MDBDropdownItem href="/Password">Change Password</MDBDropdownItem>
+              <Link className="link-navbar" to="/Edit_Profile"><MDBDropdownItem>Edit Profile</MDBDropdownItem></Link>
+                <Link className="link-navbar" to="/Password"><MDBDropdownItem>Change Password</MDBDropdownItem></Link>
                 <hr></hr>
-                <MDBDropdownItem href="/Invite">Invite Friends</MDBDropdownItem>
-                <MDBDropdownItem href="/About_Us">About Us</MDBDropdownItem>
+                <Link className="link-navbar" to="/Invite"><MDBDropdownItem>Invite Friends</MDBDropdownItem></Link>
+                <Link className="link-navbar" to="/About_Us"><MDBDropdownItem>About Us</MDBDropdownItem></Link>
                 <hr></hr>
                 <MDBDropdownItem onClick={this.props.logout}>Logout</MDBDropdownItem>
               </MDBDropdownMenu>

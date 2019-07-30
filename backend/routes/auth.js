@@ -147,7 +147,7 @@ router.post('/invite', (req, res, next) => {
       text: 'Awesome Message',
       html: `<b>Start today discovering the favourite places of your friends and share your's</b>
               <a
-              href="http://localhost:3000/login">Click here</a> and complete in few minutes the form to be part of wIdo, the great Social Netword Location.`
+              href="https://wido-social-media.herokuapp.com">Click here</a> and complete in few minutes the form to be part of wIdo, the great Social Netword Location.`
     })
 });
 
