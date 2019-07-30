@@ -12,7 +12,7 @@ const flash      = require("connect-flash");
     
 
 mongoose
-  .connect('mongodb://localhost/wido', {useNewUrlParser: true})
+  .connect(process.env.ATLASDB, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -25,7 +25,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-const whiteList = ['http://localhost:3000']
+const whiteList = ['http://localhost:3000','https://wido-social-media.herokuapp.com/']
 const corsOptions = {
   origin: (origin, cb) => {
     const originIsWhitelisted = whiteList.includes(origin);
@@ -75,6 +75,10 @@ app.use('/place', placeRoutes);
 
 const pictRoutes = require('./routes/file-upload-routes');
 app.use('/routes', pictRoutes);
+
+app.use((req,res)=>{
+  res.sendFile(__dirname+"public/index.html");
+})
 
 
 module.exports = app;
