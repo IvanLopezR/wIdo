@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../sass/main.scss'
 import Footer from './Footer';
 import axios from "axios";
 
