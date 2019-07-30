@@ -18,19 +18,27 @@ export default class UserServices {
     .then(response => response.data)
   }
 
+  userPlaces = (id) => {
+    return this.service.post('/userPlaces', {id})
+    .then(response => response.data)
+  }
+
+  userCountries = (country) => {
+    return this.service.post('/userCountries', {country})
+    .then(response => response.data)
+  }
+
   editProfile = (name, address, country, email, phone, id) => {
     return this.service.put('/editProfile/:id', { name, address, country, email, phone, id })
     .then(response => response.data)
   }
 
   changePicture = picture => {
-    console.log(picture);
     return this.service.post('/changePicture', picture)
     .then(res => res.data)
   }
 
   saveNewThing = newThing => {
-    console.log("Datos que pasan"+newThing)
     return this.service.post('/things/create', {newThing})
       .then(res => res.data)
   }

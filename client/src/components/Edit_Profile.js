@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Footer from './Footer';
 import UserServices from "../Services/UserService"
 
-export default class Edit_Profile extends Component {
+class Edit_Profile extends Component {
   constructor(props) {
     super(props);
     this.userId = this.props._id;
@@ -29,23 +30,19 @@ export default class Edit_Profile extends Component {
 
     this.service.editProfile(name, address, country, email, phone, id)
       .then(selectUser => {
+        // console.log("Hola")
         this.setState({
           // ...this.state,
           name: selectUser.name,
           address: selectUser.address,
           country: selectUser.country,
           email: selectUser.email,
-          phone: selectUser.phone
+          phone: selectUser.phone,
         })
+        console.log("Hola");
+        this.props.fetchUser()
+        this.props.history.push('/Profile')
       });
-
-    // axios.put(`http://localhost:5000/user/editProfile/${this.props._id}`, { name, address, country, email, phone })
-    //   .then(() => {
-    //     this.props.getTheProject();
-    //     this.props.history.push('/projects');
-    //     return (<Redirect to={`/profile`}/>)
-    //   })
-    //   .catch(error => console.log(error))
   }
 
   handleChangeName = (event) => {
@@ -79,10 +76,7 @@ export default class Edit_Profile extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
-    if (isAuthenticated) {
-      return <Redirect to='/Profile' />;
-    }
+    console.log(this.props)
     return (
       <div className={'background-general background-index-37'}>
         <div className="content-adapt">
@@ -379,3 +373,5 @@ export default class Edit_Profile extends Component {
     )
   }
 }
+
+export default withRouter(Edit_Profile)

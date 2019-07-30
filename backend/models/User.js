@@ -15,7 +15,7 @@ const userSchema = new Schema({
     default: 'Neighborhood'
   },
   countries: [],
-  places: [],
+  places: [{ type: Schema.Types.ObjectId, ref: "Place" }],
   following: [],
   followers: [],
   imgName: String,

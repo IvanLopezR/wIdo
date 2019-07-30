@@ -25,6 +25,7 @@ export default class Profile extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
         <div className="content-adapt">

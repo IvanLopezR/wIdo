@@ -15,6 +15,20 @@
   border-radius: 150px;
 }
 
+.pict-follow{
+  display: flex;
+  flex-direction: column;
+}
+
+.follow-btn{
+  background-color: blue;
+  margin-top:20px;
+  border-radius: 10px;
+  color:white;
+  font-weight: bold;
+  border:none;
+}
+
 .data-container{
   margin-left: 50px;
 }
