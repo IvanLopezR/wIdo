@@ -89,6 +89,10 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
                 >
                     <div>
                         <h1 className="title-infowindow">{selectedMarker.title}</h1>
+                        {/* {{if(){
+                            
+                        }
+                    }} */}
                         <button className="">Delete</button>
                         <span className="">{selectedMarker.timestamps}</span>
                         <img className="img-infowindow" src={selectedMarker.imgName}></img>

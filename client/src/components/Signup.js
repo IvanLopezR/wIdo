@@ -7,7 +7,8 @@ import logowIdo from '../logo-wIdo.png';
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '', name: '', email: '', country: '' };
+    this.state = { username: '', password: '', name: '', email: '', country: '', error: null };
+    this.errorDuplicate = "The username already exists";
     this.service = new AuthServices();
   }
 
@@ -20,25 +21,35 @@ class Signup extends Component {
     const country = this.state.country;
     this.service.signup(username, password, name, email, country)
       .then(response => {
-        this.setState({
-          username: "",
-          password: "",
-          name: "",
-          email: "",
-          country: "",
-        }, () => {
-          this.props.history.push("/login");
-        });
-        // logged: true }, () => this.props.getUser(response));
-        // this.props.getUser(response)
+        if(response.message!==this.errorDuplicate){
+          this.setState({
+            username: "",
+            password: "",
+            name: "",
+            email: "",
+            country: "",
+          }, () => {
+            this.props.history.push("/login");
+          });
+          // logged: true }, () => this.props.getUser(response));
+          // this.props.getUser(response)
+        } 
+        else{
+          document.getElementById("userError").innerHTML = this.errorDuplicate;
+          this.setState({
+            username: "",
+            password: "",
+            name: "",
+            email: "",
+            country: "",
+          })
+        }
       })
       .catch(error => console.log(error))
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name);
-    console.log(value);
     this.setState({ [name]: value }
     );
   }
@@ -335,6 +346,9 @@ class Signup extends Component {
                 <button className="btn-signup">Register</button>
               </div>
             </form>
+            <div className="advise-login msg-err-login">
+            <span value="" id="userError">{this.state.error}</span>
+            </div>
             <div className="advise-login">
               <p className="account-message">Already have account?
               <Link to={"/login"}> Login</Link>

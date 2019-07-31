@@ -13,13 +13,13 @@ export default class About_Us extends Component {
                             <li>Carlos <span>🎧</span></li>
                             <li>Vanesa <span>👵</span></li>
                             <li>Jesús <span>⛹‍</span></li>
-                            <li>Gabi <span>🎮</span></li>
+                            <li>Gabi <span>🖍</span></li>
                             <li>Rubén <span>🕺</span></li>
                             <li>Rafa <span>⚖</span></li>
                             <li>Javi <span>🏝</span></li>
                             <li>Francho <span>🛴</span></li>
                             <li>Sergio <span> 👨‍👩‍👧‍</span></li>
-                            <li>Juan <span>🇬🇧</span></li>
+                            <li>Juan <span>🎮</span></li>
                             <li>Micael <span>🚂</span></li>
                             <li>Miriam <span>🍕</span></li>
                             <li>Agustín <span>♻</span></li>

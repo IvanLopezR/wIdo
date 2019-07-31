@@ -22,9 +22,8 @@ export default class Map extends Component {
     }
 
     getPlaces() {
-        this.userService.findUserPlaces(this.props.user._id)
+        this.userService.findUserPlaces(this.props.user)
             .then(userPlaces => {
-                console.log(userPlaces)
                 if(userPlaces!==null){
                     this.setState({
                         ...this.state,

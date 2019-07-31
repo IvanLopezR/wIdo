@@ -90,7 +90,7 @@ class Edit_Profile extends Component {
               <form className="wrap-edit-data" onSubmit={this.handleFormSubmit}>
                 <div className="separator-data-edit">
                   <div className="form-group inputs-edit">
-                    <label htmlFor="name">Name </label>
+                    <label htmlFor="name">*Name </label>
                     <input type="text" className="form-control" name="nameForm" id="name" value={this.state.name} onChange={(e) => this.handleChangeName(e)} required />
                   </div>
                   <div className="form-group inputs-edit">
@@ -98,7 +98,7 @@ class Edit_Profile extends Component {
                     <input type="text" className="form-control controls" name="address" id="pac-input" value={this.state.address} onChange={(e) => this.handleChangeAddress(e)} />
                   </div>
                   <div className="form-group inputs-edit">
-                    <label htmlFor="country" name="country">Country</label>
+                    <label htmlFor="country" name="country">*Country</label>
                     <select className="form-control" name="country" id="country" value={this.state.country} onChange={(e) => this.handleChangeCountry(e)}>
                       <option value="AFG">Afghanistan</option>
                       <option value="ALA">Åland Islands</option>
@@ -354,7 +354,7 @@ class Edit_Profile extends Component {
                 </div>
                 <div className="separator-data-edit">
                   <div className="form-group inputs-edit">
-                    <label htmlFor="email">Email </label>
+                    <label htmlFor="email">*Email </label>
                     <input type="email" className="form-control" name="emailForm" id="email" value={this.state.email} onChange={(e) => this.handleChangeEmail(e)} required />
                   </div>
                   <div className="form-group inputs-edit">

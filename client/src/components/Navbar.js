@@ -50,7 +50,7 @@ render() {
                 <div className="d-none d-md-inline">Graphics</div>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <Link className="link-navbar" to="#!"><MDBDropdownItem>Users More Traveler</MDBDropdownItem></Link>
+                <Link className="link-navbar" to="/Graphic"><MDBDropdownItem>Users More Traveler</MDBDropdownItem></Link>
                 <Link className="link-navbar" to="#!"><MDBDropdownItem>Most Visited Countries</MDBDropdownItem></Link>
                 <Link className="link-navbar" to="#!"><MDBDropdownItem>More Follower Users</MDBDropdownItem></Link>
               </MDBDropdownMenu>

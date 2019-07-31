@@ -48,4 +48,14 @@ export default class UserServices {
     .then(res => res.data)
   }
 
+  follow = (ownId, userId) => {
+    return this.service.post('/follow', {ownId, userId})
+    .then(res => res.data)
+  }
+
+  unfollow = (own, user) => {
+    return this.service.post('/unfollow', {own, user})
+    .then(res => res.data)
+  }
+
 }

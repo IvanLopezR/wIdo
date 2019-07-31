@@ -49,14 +49,14 @@ router.post("/changePassword", (req, res, next) => {
   const password = req.body.password;
   const id = req.user._id;
   if (passwordNew !== passwordNew2) {
-    // res.render('auth/security', { errorMessage: "Write different password." });
+    res.json({ errorMessage: "Passwords isn't equals." });
     return
   }
   User
     .findById(id)
     .then(foundUser => {
       if (!bcrypt.compareSync(password, foundUser.password)) {
-        // res.render('auth/security', { errorMessage: "Wrong password" });
+        res.json({ errorMessage: "Wrong password" });
         return;
       }
       const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -66,7 +66,7 @@ router.post("/changePassword", (req, res, next) => {
           password: hashPass,
         })
         .then(updatedData => {
-          res.render('auth/security', { successMessage: "Password has been changed." });
+          res.json({ successMessage: "Password has been changed." });
         })
     })
 });
@@ -83,12 +83,11 @@ router.post("/signup", (req, res, next) => {
     token += characters[Math.floor(Math.random() * characters.length)];
   }
   if (username === "" || password === "") {
-    res.render("signup", { message: "Indicate username and password" });
     return;
   }
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
-      res.render("signup", { message: "The username already exists" });
+      res.json({ message: "The username already exists" });
       return;
     }
     const salt = bcrypt.genSaltSync(bcryptSalt);

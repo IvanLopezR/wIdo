@@ -6,7 +6,7 @@ class Picture extends Component {
     constructor() {
         super();
         this.state = {
-            imgName: ""
+            imgName: "",
         }
         this.UserServices = new UserServices()
     }

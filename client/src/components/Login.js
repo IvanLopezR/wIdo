@@ -8,7 +8,7 @@ import logowIdo from '../logo-wIdo.png';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '', logged: false, error: '' };
+    this.state = { username: '', password: '', logged: false, error: null };
     this.service = new AuthServices();
   }
 
@@ -21,7 +21,13 @@ class Login extends Component {
         this.setState({ username: "", password: "", logged: true }, () => this.props.getUser(response));
         this.props.getUser(response)
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        let errorMsg = error.response.data.message
+        this.setState({
+          ...this.state,
+          error: errorMsg
+        })
+      })
   }
 
   handleChange = (event) => {
@@ -64,6 +70,11 @@ class Login extends Component {
                 /> */}
               </div>
             </form>
+            <div className="advise-login msg-err-login">
+              {
+                this.state.error && <span>{this.state.error}</span>
+              }
+            </div>
             <div className="advise-login">
               <p className="account-message">Don't have account?
               <Link to={"/signup"}> Create new account</Link>

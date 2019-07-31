@@ -23,6 +23,7 @@ class MapEdit extends Component {
                 lat: 40.416775,
                 lng: -3.703790,
             },
+            // imgName2:"",
             click:null
         };
         this.control = false;
@@ -68,6 +69,9 @@ class MapEdit extends Component {
     }
 
     handleFileUpload = e => {
+        this.setState({ imgName: ""})
+        document.getElementById(this.idBtn).style.backgroundColor = "white";
+                    document.getElementById(this.idBtn).disabled = true;
         console.log("The file to be uploaded is: ", e.target.files[0]);
         console.log(this.state.lat)
         const uploadData = new FormData();
@@ -165,14 +169,13 @@ class MapEdit extends Component {
     }
 
     render() {
-        console.log(this.state.places)
-        console.log(this.state.isLoading)
         if (this.state.isLoading) {
             return (
                 <div className="map-container" style={{ width: '98%', height: '100vh' }}>
                     <div >
                         <form className="info-place" onSubmit={this.handleSubmit}>
                             <button className="btn-save" id="btn-save" disabled>Save</button>
+                            <img className="pict-upload" src={this.state.imgName}></img>
                             <input type="file" id="pict-place" onChange={(e) => this.handleFileUpload(e)} required></input>
                             <select className="form-control input-place" id="select-type" name="type" onChange={(e) => this.handleChange(e)}>
                                 <option value="Visit Place">Visit Place</option>

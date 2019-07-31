@@ -20,13 +20,20 @@
   flex-direction: column;
 }
 
-.follow-btn{
-  background-color: blue;
+.follow-btn-ok, .follow-btn-not{
   margin-top:20px;
   border-radius: 10px;
   color:white;
   font-weight: bold;
   border:none;
+}
+
+.follow-btn-ok{
+  background-color: blue;
+}
+
+.follow-btn-not{
+  background-color: red;
 }
 
 .data-container{
@@ -67,4 +74,20 @@
 
 .map-profile{
   margin: -20px 50px 100px 0px;
+}
+
+.img-level, .img-level-home{
+  height: 50px;
+  margin: 10px 10px 20px 15px;
+  margin-top: 10px;
+}
+
+.unit-name-level{
+  display: flex;
+  flex-direction: row;
+}
+
+.img-level-home{
+  margin-left: 30px;
+  margin-top: -1px;
 }

@@ -5,117 +5,187 @@ import axios from "axios";
 import Map from './Map';
 import { Link } from 'react-router-dom';
 
+let countryInfo = {
+    name: "",
+    flag: ""
+}
+
 export default class Selected_User extends Component {
     constructor(props) {
         super(props);
         this.state = {
             users: {
+                id: "",
                 username: "",
                 email: "",
                 imgName: "",
                 flag: "",
                 name: "",
                 range: "",
-                following: "",
-                followers: "",
+                following: [],
+                followers: [],
                 country: "",
                 countries: [],
             },
-            country: {
-                country: "",
-                alpha3Code: "",
-                flag:"",
-            }
+            arrCountries: [],
+            country: "",
+            countries: [],
+            followed: "",
         };
-        this.idBtn = "follow-btn";
+        this.arrayCountries = [];
+        this.setLevel = "Neighborhood";
+        this.pictLevel = "../Neighborhood.png";
+        this.isLoading = false;
         this.service = new UserServices();
     }
 
-    getCountry = () => {
+    getPropCountry = () => {
         axios.get(`https://restcountries.eu/rest/v2/alpha/${this.state.users.country}`)
             .then(responseFromApi => {
-                const country = responseFromApi.data
+                const coun = responseFromApi.data
                 this.setState({
-                    ...this.state.users,
-                    country: country,
-                });
+                    ...this.state,
+                    country: coun,
+                })
             })
+        this.getCountries();
     }
 
-    getCountries = (country) => {
-        axios.get(`https://restcountries.eu/rest/v2/alpha/${country}`)
-        .then(responseFromApi => {
-            const country = responseFromApi.data
-            this.setState({
-                ...this.state,
-                country: country,
-            });
+    getCountries = () => {
+        this.state.users.countries.forEach(country => {
+            if (country !== null && this.arrayCountries.indexOf(country) === -1) {
+                this.arrayCountries.push(country);
+            }
         })
+        Promise.all(this.arrayCountries.map(country => {
+            return axios.get(`https://restcountries.eu/rest/v2/alpha/${country}`)
+                .then((info) => {
+                    countryInfo.flag = info.data.flag;
+                    countryInfo.name = country
+                    return { ...countryInfo }
+
+                })
+        }))
+            .then((arr) => {
+                this.setState({
+                    ...this.state,
+                    countries: arr,
+                })
+            })
+        if (this.arrayCountries.length > 2 && this.arrayCountries.length < 5) {
+            this.setLevel = "Curious";
+            this.pictLevel = "../Curious.png"
+        }
+        else if (this.arrayCountries.length >= 5 && this.arrayCountries.length < 10) {
+            this.setLevel = "Adventurous";
+            this.pictLevel = "../Adventurous.png"
+        }
+        else if (this.arrayCountries.length >= 10 && this.arrayCountries.length < 15) {
+            this.setLevel = "Jet Lag";
+            this.pictLevel = "../JetLag.png"
+        }
+        else if (this.arrayCountries.length >= 15 && this.arrayCountries.length < 20) {
+            this.setLevel = "Cristobal Colón";
+            this.pictLevel = "../Colon.svg"
+        }
+        else if (this.arrayCountries.length >= 20) {
+            this.setLevel = "Willy Fog";
+            this.pictLevel = "../WillyFog.png"
+        }
+
+        this.isLoading = true;
     }
 
     componentDidMount() {
-        if(this.props.us===this.props._id){
-            document.getElementById(this.idBtn).hidden = true; 
-        }
         this.service.selectUser(this.props.us)
             .then(selectUser => {
                 this.setState({
                     ...this.state,
                     users: selectUser
                 })
-                this.getCountry();
-                // document.getElementById(this.idBtn).innerHTML = "unfollow";
-                // document.getElementById("follow-btn").style.backgroundColor = "red";   
+                this.getPropCountry();
+                if (this.state.users.followers.includes(this.props._id)) {            
+                    this.setState({
+                        ...this.state,
+                        followed:true,
+                    })
+                }
+            });
+    }
+
+    follow(e) {
+        e.preventDefault()
+        this.service.follow(this.props._id, this.props.us)
+            .then(res => {
+                // console.log('added: ', res);
+                // here you would redirect to some other page 
+                this.setState({
+                    ...this.state,
+                    followed:true,
+                })
+            })
+            .catch(err => {
+                console.log("Error while adding the thing: ", err);
+            });
+    }
+
+    unfollow(e) {
+        e.preventDefault()
+        this.service.unfollow(this.props, this.state.users)
+            .then(res => {
+                // console.log('added: ', res);
+                // here you would redirect to some other page 
+                this.setState({
+                    ...this.state,
+                    followed:false,
+                })
+            })
+            .catch(err => {
+                console.log("Error while adding the thing: ", err);
             });
     }
 
     render() {
-        return (
-            <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
-                <div className="content-adapt">
-                    <div className="container-profile">
-                        <div className="pict-follow">
-                            <Link to={"../profile"}><img className="profile" src={this.state.users.imgName} alt={this.state.users.imgName} /></Link>
-                            <button id="follow-btn" className="follow-btn">Follow</button>
-                        </div>
-                        <div className="data-container">
-                            <Link to={"/country/" + this.state.country.alpha3Code} ><img src={this.state.country.flag} className="flag-address" alt={this.state.users.name}></img></Link>
-                            <h2><Link className="link-profile" to={"../profile"}>{this.state.users.name}</Link></h2>
-                            <h5 className="info-profile">Level: {this.state.users.range} <span className="separator-info-profile"></span> Following: {this.state.users.following.length} <span className="separator-info-profile"></span> Followers: {this.state.users.followers.length}</h5>
-                            <h5 className="info-profile conquered-countries">Conquered Countries: </h5>
-                            <div>                                
-                                {this.state.users.countries.map(country => {
-                                    this.getCountries(country);
-                                    return (
-                                        <Link to={"/country/" + country} ><img src={this.state.country.flag} alt={this.state.country.flag} className="flag"></img></Link>
-
-                                         /* <div className="container-in"> */
-                                             /* <div className="container-pict"> */
-                                                 /* <img src={beer.image_url} className="beer-pict"></img> */
-                                             /* </div> */
-                                             /* <div className="container-text key={beer._id}"> */
-                                                 /* <h2 className="name-beers"><Link to={`/detail/${beer._id}`} className="link">{beer.name}</Link></h2> */
-                                                 /* <h3 className="tagline">{beer.tagline}</h3> */
-                                                 /* <p><span className="contributed">Created by:</span> {beer.contributed_by}</p> */
-                                             /* </div> */
-                                         /* </div> */
-                                    /* ) */
-                                /* }) */
-                                /* } */
-                                          /* {this.props.countries.map(country => { */
-                                             /* return <Link to={"/country/" + country} ><img src={this.state.country.flag} alt={this.state.country.name} className="flag"></img></Link> */
-                                    /* //     }) */
-                                    )}
+        if (this.isLoading) {
+            return (
+                <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
+                    <div className="content-adapt">
+                        <div className="container-profile">
+                            <div className="pict-follow">
+                                <img className="profile" src={this.state.users.imgName} alt={this.state.users.imgName} title={this.state.users.name} />
+                                {console.log(this.state.followed)}
+                                {this.state.followed ? (
+                                    <button id="follow-btn" className="follow-btn-not" onClick={e => this.unfollow(e)}>Unfollow</button>
+                                    ) : (
+                                        <button id="follow-btn" className="follow-btn-ok" onClick={e => this.follow(e)}>Follow</button>
                                 )}
                             </div>
+                            <div className="data-container">
+                                <Link to={"/country/" + this.state.users.country} ><img src={this.state.country.flag} className="flag-address" alt={this.state.country.name} title={this.state.country.name}></img></Link>
+                                <div className="unit-name-level">
+                                    <h2>{this.state.users.name} ({this.state.users.username})</h2>
+                                    <img src={this.pictLevel} className="img-level-home" alt={this.setLevel} title={this.setLevel}></img>
+                                </div>
+                                <h5 className="info-profile">Level: {this.setLevel} <span className="separator-info-profile"></span> Following: {this.state.users.following.length} <span className="separator-info-profile"></span> Followers: {this.state.users.followers.length}</h5>
+                                <h5 className="info-profile conquered-countries">Conquered Countries: </h5>
+                                <div>
+                                    {this.state.countries.map(coun => {
+                                        return <Link to={"/country/" + coun.name} ><img src={coun.flag} alt={coun.name} title={coun.name} className="flag"></img></Link>
+                                    }
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        < div className="map-profile">
+                            <Map user={this.props.us}></Map>
                         </div>
                     </div>
-                < div className="map-profile">
-                    <Map user={this.props._id}></Map>
+                    <Footer></Footer>
                 </div>
-            </div>
-            <Footer></Footer>
-        </div>
-        )
+            )
+        }
+        else {
+            return <h1>Loading...</h1>
+        }
     }
 }

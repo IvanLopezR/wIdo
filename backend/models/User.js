@@ -16,8 +16,8 @@ const userSchema = new Schema({
   },
   countries: [],
   places: [{ type: Schema.Types.ObjectId, ref: "Place" }],
-  following: [],
-  followers: [],
+  following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
   imgName: String,
   token: String,
   status: {
