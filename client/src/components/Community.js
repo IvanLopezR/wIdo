@@ -40,7 +40,7 @@ export default class Community extends Component {
 
     render() {
         return (
-            <div className={'background-general background-index-62'}>
+            <div className={'background-general background-index-42'}>
                 <div className="content-adapt">
                     <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchUser(e)}></input>
                     <div className="container-profile">

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import axios from "axios";
+var QRCode = require('qrcode.react');
 
 let countryInfo = {
   name: "",
   flag: ""
 }
+
 
 export default class Profile extends Component {
   constructor(props) {
@@ -14,12 +16,13 @@ export default class Profile extends Component {
     this.state = {
       arrCountries: [],
       country: "",
-      countries:[],
+      countries: [],
     }
     this.arrayCountries = [];
     this.isLoading = false;
     this.setLevel = "Neighborhood";
     this.pictLevel = "Neighborhood.png";
+    this.qrCode = `https://wido-social-media.herokuapp.com/user/${this.props._id}`;
   }
 
   getPropCountry = () => {
@@ -28,7 +31,7 @@ export default class Profile extends Component {
         const coun = responseFromApi.data
         this.setState({
           ...this.state,
-          country:coun,
+          country: coun,
         })
       })
   }
@@ -39,21 +42,21 @@ export default class Profile extends Component {
         this.arrayCountries.push(country);
       }
     })
-    Promise.all(this.arrayCountries.map(country=>{
+    Promise.all(this.arrayCountries.map(country => {
       return axios.get(`https://restcountries.eu/rest/v2/alpha/${country}`)
-      .then((info)=>{
-         countryInfo.flag = info.data.flag;
-         countryInfo.name = country
-         return {...countryInfo}
+        .then((info) => {
+          countryInfo.flag = info.data.flag;
+          countryInfo.name = country
+          return { ...countryInfo }
 
-      })
+        })
     }))
-    .then((arr)=>{
-      this.setState({
-        ...this.state,
-        countries:arr,
+      .then((arr) => {
+        this.setState({
+          ...this.state,
+          countries: arr,
+        })
       })
-    })
 
     if (this.arrayCountries.length > 2 && this.arrayCountries.length < 5) {
       this.setLevel = "Curious";
@@ -110,13 +113,17 @@ export default class Profile extends Component {
                   <li className="li-country">Level: {this.setLevel}</li>
                   <li className="info-profile conquered-countries li-country">Conquered Countries:
                     {this.state.countries.map(coun => {
-                    return <Link to={"/country/" + coun.name} ><img src={coun.flag} alt={coun.name} title={coun.name} className="flag"></img></Link>
-                  }
-                  )}
+                      return <Link to={"/country/" + coun.name} ><img src={coun.flag} alt={coun.name} title={coun.name} className="flag"></img></Link>
+                    }
+                    )}
                   </li>
                 </ul>
               </div>
+                    <QRCode className="qr-code" value={this.qrCode} />
             </div>
+            
+            
+            
           </div>
           <Footer></Footer>
         </div>

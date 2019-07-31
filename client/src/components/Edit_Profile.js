@@ -30,7 +30,6 @@ class Edit_Profile extends Component {
 
     this.service.editProfile(name, address, country, email, phone, id)
       .then(selectUser => {
-        // console.log("Hola")
         this.setState({
           // ...this.state,
           name: selectUser.name,
@@ -39,7 +38,6 @@ class Edit_Profile extends Component {
           email: selectUser.email,
           phone: selectUser.phone,
         })
-        console.log("Hola");
         this.props.fetchUser()
         this.props.history.push('/Profile')
       });

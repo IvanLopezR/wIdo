@@ -108,7 +108,6 @@ router.post('/findUserPlaces', (req, res, next) => {
 
 
 router.post('/follow', (req, res, next) => {
-  console.log(req.body.ownId)
   User
     .findByIdAndUpdate(req.body.ownId, { $push: { following: req.body.userId } }, { new: true })
     .then(updateData => {
@@ -121,29 +120,37 @@ router.post('/follow', (req, res, next) => {
 })
 
 router.post('/unfollow', (req, res, next) => {
-  console.log(req.body.own)
-  console.log(req.body.user)
   User
-    .findOne({ '_id': req.body.ownId._id }, function (err, me) {
-      for (let i = 0; i <= req.body.own.following.length; i++) {
-        if (String(req.body.own.following[i]) == String(req.body.user._id)) {
-          req.body.own.following.remove(req.body.user._id);
-        }
-      }
-    }
-    .findOne({ '_id': req.body.user._id }, function(err,me){
-      for(let i=0;i <= req.body.user.followers.length; i++){
-        if(String(req.body.user.followers[i]) == String (req.body.own._id)){
-          req.body.user.followers.remove(req.body.own._id);
-        }
-      }
+  .findByIdAndUpdate(req.body.own._id, { $pull: { following: req.body.user._id } }, { new: true })
+    .then(updateData => {
+      User
+        .findByIdAndUpdate(req.body.user._id, { $pull: { followers: req.body.own._id } }, { new: true })
+        .then(update => {
+          res.json(update);
+        })
     })
-    .then(update => {
-      res.json(update);
-    })
-  );
 })
 
+router.post('/followers', (req, res, next) => {
+  console.log(req.body.userId)
+  User
+  .findOne(req.body.userId)
+  .then(user => {
+    console.log(user);
+    res.json(user.followers)
+  })
+  .catch(err => console.log(err))
+})
+
+router.post('/following', (req, res, next) => {
+  User
+  .findOne(req.body.userId)
+  .then(user => {
+    console.log(user.following);
+    res.json(user.following)
+  })
+  .catch(err => console.log(err))
+})
 
 
 module.exports = router;

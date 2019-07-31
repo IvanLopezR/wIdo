@@ -84,7 +84,7 @@ class App extends Component {
             <Route exact path='/Map_Board' render={() => <Map_Board {...this.state.loggedInUser} />} />
             <Route exact path='/Edit_Profile' render={() => <Edit_Profile fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/About_Us' render={() => <About_Us {...this.state.loggedInUser} />} />
-            <Route exact path='/Invite' render={() => <Invite {...this.state.loggedInUser} />} />
+            <Route exact path='/Invite' render={() => <Invite fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/Password' render={() => <Password fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/Picture' render={() => <Picture fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/Graphic' render={() => <Graphic {...this.state.loggedInUser} />} />
@@ -114,6 +114,11 @@ class App extends Component {
             <Route exact path='/country/:chosenCountry' render={(props) => {
               var chosenCountry = props.match.params.chosenCountry
               return <Selected_Country coun={chosenCountry}></Selected_Country>
+            }}
+            />
+            <Route exact path='/user/:chosenUser' render={(props) => {
+              var chosenUser = props.match.params.chosenUser;
+              return <Selected_User us={chosenUser} {...this.state.loggedInUser}></Selected_User>
             }}
             />
             <Route exact path='/About_Us' render={() => <About_Us {...this.state.loggedInUser} />} />

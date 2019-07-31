@@ -140,14 +140,19 @@ router.post('/invite', (req, res, next) => {
     const emailFriend = req.body.emailFriend;
     const name = req.user.name;
     transporter.sendMail({
-      from: '"wIdo📍" <process.env.USER>',
+      from: '"w📍do" <process.env.USER>',
       to: emailFriend,
       subject: `${name} invite you to participate in wIdo - Social Network Locations 📌`,
       text: 'Awesome Message',
-      html: `<b>Start today discovering the favourite places of your friends and share your's</b>
-              <a
-              href="https://wido-social-media.herokuapp.com">Click here</a> and complete in few minutes the form to be part of wIdo, the great Social Netword Location.`
+      html: `<body>              
+              <h2>Start today discovering the favourite places of your friends and share your's.</h3>
+              <p><a
+              href="https://wido-social-media.herokuapp.com">Click here</a> and complete in one minute the form to be part of wIdo, the great Social Networt Location.</p>
+              <p>You can share your favourites place to visit, sleep, eat or do one activity with the community and see what, where, and why do activities around the world.</p>
+              <img src=https://res.cloudinary.com/dpkvkfi5u/image/upload/v1564399013/wIdo-gallery/logo-wIdo.png.png>
+              </body>`
     })
+    return res.json({ message: "Success send"})
 });
 
 router.get('/loggedin', (req, res, next) => {

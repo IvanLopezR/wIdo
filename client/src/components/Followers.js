@@ -1,12 +1,62 @@
-import React, { Component } from 'react'
-import Footer from "./Footer"
+import React, { Component } from 'react';
+import Footer from './Footer';
+import User from './User';
+import UserServices from "../Services/UserService"
 
 export default class Followers extends Component {
-    render() {
-        return (
-            <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: []
+        };
+        this.service = new UserServices();
+    }
 
-                <Footer></Footer>
+    componentDidMount() {
+        this.service.followers(this.props._id)
+            .then(allUsers => {
+                console.log(allUsers)
+                this.setState({
+                    ...this.state,
+                    users: allUsers
+                })
+            });
+    }
+
+    searchUser(e) {
+        e = e.target.value.slice(0, 1).toUpperCase() + e.target.value.slice(1, e.length);
+        let newState = { ...this.state };
+        let findUsers = newState.users.filter(ele => ele.name.indexOf(e)
+            === 0);
+        this.setState({
+            ...this.state,
+            users: findUsers
+        }
+            ,
+            () => {
+                this.state.users = [...newState.users]
+            }
+        );
+    }
+
+    render() {
+        console.log(this.props)
+        return (
+            <div className={'background-general background-index-59'}>
+                <div className="content-adapt">
+                    <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchUser(e)}></input>
+                    <div className="container-profile">
+                        <div className="countries">
+                            {this.state.users.map((feature, idx) => {
+                                if (feature._id !== this.props._id) {
+                                    console.log({...feature})
+                                    return <User {...feature} key={idx} />
+                                }
+                            })}
+                        </div>
+                    </div>
+                    <Footer></Footer>
+                </div>
             </div>
         )
     }

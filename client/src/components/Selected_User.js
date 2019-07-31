@@ -146,6 +146,10 @@ export default class Selected_User extends Component {
     }
 
     render() {
+        console.log("Usuario Actual: ")
+        console.log(this.props)
+        console.log("Usuario Vista: ")
+        console.log(this.state.users)
         if (this.isLoading) {
             return (
                 <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>

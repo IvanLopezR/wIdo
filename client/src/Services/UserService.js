@@ -54,7 +54,21 @@ export default class UserServices {
   }
 
   unfollow = (own, user) => {
+    console.log("Yo")
+    console.log(own)
+    console.log("Vista")
+    console.log(user)
     return this.service.post('/unfollow', {own, user})
+    .then(res => res.data)
+  }
+
+  followers = userId => {
+    return this.service.post('/followers', userId)
+    .then(res => res.data)
+  }
+
+  following = userId => {
+    return this.service.post('/following', userId)
     .then(res => res.data)
   }
 
