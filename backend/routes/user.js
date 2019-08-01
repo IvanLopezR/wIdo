@@ -14,8 +14,9 @@ router.get('/community', (req, res, next) => {
 });
 
 router.post('/userDetails/:id', (req, res, next) => {
+  console.log(req.params.id)
   User
-    .findById(req.body.id)
+    .findById(req.params.id)
     .then(user => res.json(user))
     .catch((err) => {
       console.log(err)

@@ -14,7 +14,7 @@ export default class UserServices {
   }
 
   selectUser = (id) => {
-    return this.service.post('/userDetails/:id', {id})
+    return this.service.post(`/userDetails/${id}`, {id})
     .then(response => response.data)
   }
 
