@@ -40,6 +40,7 @@ class App extends Component {
 
   fetchUser = () => {
     this.service.loggedIn().then((userData) => {
+      console.log(userData)
       if (userData) {
         this.setState({
           loggedInUser: userData
@@ -116,7 +117,7 @@ class App extends Component {
               return <Selected_Country coun={chosenCountry}></Selected_Country>
             }}
             />
-            <Route exact path='/user/:chosenUser' render={(props) => {
+            <Route path='/user/:chosenUser' render={(props) => {
               var chosenUser = props.match.params.chosenUser;
               return <Selected_User us={chosenUser}></Selected_User>
             }}

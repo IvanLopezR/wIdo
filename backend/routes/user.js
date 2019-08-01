@@ -14,7 +14,6 @@ router.get('/community', (req, res, next) => {
 });
 
 router.post('/userDetails/:id', (req, res, next) => {
-  console.log(req.params.id)
   User
     .findById(req.params.id)
     .then(user => res.json(user))
@@ -33,8 +32,6 @@ router.post('/userPlaces', (req, res, next) => {
 })
 
 router.post('/userCountries', (req, res, next) => {
-  console.log(req.user._id)
-  console.log(req.body.country)
   User
     .findByIdAndUpdate(req.user._id, { $push: { countries: req.body.country } }, { new: true })
     .then(updateData => {
@@ -81,7 +78,6 @@ router.post('/changePicture', uploader.single("imgName"), (req, res, next) => {
 })
 
 router.post('/things/create', (req, res, next) => {
-  console.log(req.body.newThing);
   const img = req.body.newThing;
   User
     .findByIdAndUpdate(req.user._id, {
@@ -101,7 +97,6 @@ router.post('/findUserPlaces', (req, res, next) => {
     .findById(req.body.userId)
     .populate('places')
     .then(user => {
-      console.log(user)
       res.json(user)
     })
     .catch(err => console.log(err))
@@ -133,11 +128,9 @@ router.post('/unfollow', (req, res, next) => {
 })
 
 router.post('/followers', (req, res, next) => {
-  console.log(req.body.userId)
   User
   .findOne(req.body.userId)
   .then(user => {
-    console.log(user);
     res.json(user.followers)
   })
   .catch(err => console.log(err))
@@ -147,7 +140,6 @@ router.post('/following', (req, res, next) => {
   User
   .findOne(req.body.userId)
   .then(user => {
-    console.log(user.following);
     res.json(user.following)
   })
   .catch(err => console.log(err))

@@ -16,7 +16,6 @@ router.get('/places', (req, res, next) => {
 });
 
 router.post('/changePicture', uploader.single("imgName"), (req, res, next) => {
-  console.log(req.file)
   if (!req.file) {
     next(new Error('No file uploaded!'));
     return;
