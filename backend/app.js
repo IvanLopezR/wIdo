@@ -77,7 +77,7 @@ const pictRoutes = require('./routes/file-upload-routes');
 app.use('/api/routes', pictRoutes);
 
 app.use((req,res)=>{
-  res.sendFile(__dirname+"public/index.html");
+  res.sendFile(__dirname+"/public/index.html");
 })
 
 
