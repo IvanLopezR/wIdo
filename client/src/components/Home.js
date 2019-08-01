@@ -4,6 +4,7 @@ import '../sass/main.scss'
 import Footer from './Footer';
 import Map from './Map';
 import axios from "axios";
+// import WrappedMap3 from './WrappedMap3';
 
 let countryInfo = {
   name: "",

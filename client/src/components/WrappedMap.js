@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import { Marker, InfoWindow } from "react-google-maps";
+const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
 
 const WrappedMap = withScriptjs(withGoogleMap((props) => {
     const [selectedMarker, setSelectedMarker] = useState(null);
@@ -13,6 +14,7 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
             }
             onClick={props.newMarker}
         >
+            
             {props.clicky}
                     
             {props.markers.map(marker => {

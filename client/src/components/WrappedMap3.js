@@ -1,3 +1,5 @@
+import React from 'react'
+
 const _ = require("lodash");
 const { compose, withProps, lifecycle } = require("recompose");
 const {

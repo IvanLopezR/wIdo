@@ -99,6 +99,7 @@ export default class Selected_User extends Component {
     componentDidMount() {
         this.service.selectUser(this.props.us)
             .then(selectUser => {
+                console.log(selectUser)
                 this.setState({
                     ...this.state,
                     users: selectUser

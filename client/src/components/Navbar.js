@@ -45,16 +45,7 @@ render() {
             <MDBNavLink to="/Countries">Countries</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBDropdown>
-              <MDBDropdownToggle nav caret>
-                <div className="d-none d-md-inline">Graphics</div>
-              </MDBDropdownToggle>
-              <MDBDropdownMenu className="dropdown-default">
-                <Link className="link-navbar" to="/Graphic"><MDBDropdownItem>Users More Traveler</MDBDropdownItem></Link>
-                <Link className="link-navbar" to="#!"><MDBDropdownItem>Most Visited Countries</MDBDropdownItem></Link>
-                <Link className="link-navbar" to="#!"><MDBDropdownItem>More Follower Users</MDBDropdownItem></Link>
-              </MDBDropdownMenu>
-            </MDBDropdown>
+            <MDBNavLink to="/Graphic">Top Users</MDBNavLink>
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>

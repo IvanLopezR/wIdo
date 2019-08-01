@@ -40,7 +40,7 @@ export default class Following extends Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.state.users)
         return (
             <div className={'background-general background-index-19'}>
                 <div className="content-adapt">
@@ -48,8 +48,9 @@ export default class Following extends Component {
                     <div className="container-profile">
                         <div className="countries">
                             {this.state.users.map((feature, idx) => {
+                                console.log(...feature)
                                 if (feature._id !== this.props._id) {
-                                    return <User {...feature} key={idx} />
+                                    return <User id={feature} key={idx} />
                                 }
                             })}
                         </div>
