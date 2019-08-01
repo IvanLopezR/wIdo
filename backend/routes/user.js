@@ -136,9 +136,9 @@ router.post('/followers', (req, res, next) => {
   .catch(err => console.log(err))
 })
 
-router.post('/following', (req, res, next) => {
+router.post('/following/:id', (req, res, next) => {
   User
-  .findOne(req.body.userId)
+  .findById(req.params.id)
   .then(user => {
     res.json(user.following)
   })

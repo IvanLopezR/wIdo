@@ -14,7 +14,7 @@ export default class UserServices {
   }
 
   selectUser = (id) => {
-    return this.service.post(`/userDetails/${id}`, {id})
+    return this.service.post(`/userDetails/${id}`)
     .then(response => response.data)
   }
 
@@ -68,7 +68,8 @@ export default class UserServices {
   }
 
   following = userId => {
-    return this.service.post('/following', userId)
+    console.log(userId)
+    return this.service.post(`/following/${userId}`)
     .then(res => res.data)
   }
 
