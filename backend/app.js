@@ -62,19 +62,19 @@ require('./passport')(app);
     
 
 const index = require('./routes/index');
-app.use('/', index);
+app.use('/api', index);
 
 const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 const userRoutes = require('./routes/user');
-app.use('/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 const placeRoutes = require('./routes/place');
-app.use('/place', placeRoutes);
+app.use('/api/place', placeRoutes);
 
 const pictRoutes = require('./routes/file-upload-routes');
-app.use('/routes', pictRoutes);
+app.use('/api/routes', pictRoutes);
 
 app.use((req,res)=>{
   res.sendFile(__dirname+"public/index.html");
