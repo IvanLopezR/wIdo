@@ -166,7 +166,7 @@ export default class Selected_User extends Component {
                                 )}
                             </div>
                             <div className="data-container">
-                                <Link to={"/country/" + this.state.users.country} ><img src={this.state.country.flag} className="flag-address" alt={this.state.country.name} title={this.state.country.name}></img></Link>
+                                <Link to={"/Country/" + this.state.users.country} ><img src={this.state.country.flag} className="flag-address" alt={this.state.country.name} title={this.state.country.name}></img></Link>
                                 <div className="unit-name-level">
                                     <h2>{this.state.users.name} ({this.state.users.username})</h2>
                                     <img src={this.pictLevel} className="img-level-home" alt={this.setLevel} title={this.setLevel}></img>
@@ -175,7 +175,7 @@ export default class Selected_User extends Component {
                                 <h5 className="info-profile conquered-countries">Conquered Countries: </h5>
                                 <div>
                                     {this.state.countries.map(coun => {
-                                        return <Link to={"/country/" + coun.name} ><img src={coun.flag} alt={coun.name} title={coun.name} className="flag"></img></Link>
+                                        return <Link to={"/Country/" + coun.name} ><img src={coun.flag} alt={coun.name} title={coun.name} className="flag"></img></Link>
                                     }
                                     )}
                                 </div>

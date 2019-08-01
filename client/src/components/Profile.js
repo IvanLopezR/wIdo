@@ -22,7 +22,7 @@ export default class Profile extends Component {
     this.isLoading = false;
     this.setLevel = "Neighborhood";
     this.pictLevel = "Neighborhood.png";
-    this.qrCode = `https://wido-social-media.herokuapp.com/user/${this.props._id}`;
+    this.qrCode = `https://wido-social-media.herokuapp.com/User/${this.props._id}`;
   }
 
   getPropCountry = () => {

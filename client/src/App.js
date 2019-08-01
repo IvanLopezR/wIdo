@@ -89,12 +89,12 @@ class App extends Component {
             <Route exact path='/Password' render={() => <Password fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/Picture' render={() => <Picture fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/Graphic' render={() => <Graphic {...this.state.loggedInUser} />} />
-            <Route exact path='/country/:chosenCountry' render={(props) => {
+            <Route exact path='/Country/:chosenCountry' render={(props) => {
               var chosenCountry = props.match.params.chosenCountry
               return <Selected_Country coun={chosenCountry}></Selected_Country>
             }}
             />
-            <Route exact path='/user/:chosenUser' render={(props) => {
+            <Route exact path='/User/:chosenUser' render={(props) => {
               var chosenUser = props.match.params.chosenUser;
               return <Selected_User us={chosenUser} {...this.state.loggedInUser}></Selected_User>
             }}
@@ -117,7 +117,7 @@ class App extends Component {
               return <Selected_Country coun={chosenCountry}></Selected_Country>
             }}
             />
-            <Route path='/user/:chosenUser' render={(props) => {
+            <Route path='/User/:chosenUser' render={(props) => {
               var chosenUser = props.match.params.chosenUser;
               return <Selected_User us={chosenUser}></Selected_User>
             }}

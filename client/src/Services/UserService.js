@@ -68,8 +68,12 @@ export default class UserServices {
   }
 
   following = userId => {
-    console.log(userId)
     return this.service.post(`/following/${userId}`)
+    .then(res => res.data)
+  }
+
+  getUserExtend = userId => {
+    return this.service.get(`/userExtend/${userId}`)
     .then(res => res.data)
   }
 

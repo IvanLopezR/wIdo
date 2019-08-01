@@ -12,8 +12,8 @@ export default class User extends Component {
         console.log(this.props.id)
         return (
             <div className="country-container">
-                <Link to={"/user/" + this.props._id} ><img className="profile" src={this.props.imgName} alt=""></img></Link>
-                <Link to={"/user/" + this.props._id} ><h3 className="link-country username-community">{this.props.username}</h3></Link>
+                <Link to={"/User/" + this.props._id} ><img className="profile" src={this.props.imgName} alt=""></img></Link>
+                <Link to={"/User/" + this.props._id} ><h3 className="link-country username-community">{this.props.username}</h3></Link>
             </div>
         )
     }

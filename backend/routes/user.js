@@ -145,5 +145,14 @@ router.post('/following/:id', (req, res, next) => {
   .catch(err => console.log(err))
 })
 
+router.get('/userExtend/:id', (req, res, next) => {
+  User
+  .findById(req.params.id)
+  .then(user => {
+    res.json(user)
+  })
+  .catch(err => console.log(err))
+})
+
 
 module.exports = router;

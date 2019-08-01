@@ -46,6 +46,7 @@ export default class Community extends Component {
                     <div className="container-profile">
                         <div className="countries">
                             {this.state.users.map((feature, idx) => {
+                                console.log(feature)
                                 if(feature._id!==this.props._id){
                                     return <User {...feature} key={idx} />
                                 }
