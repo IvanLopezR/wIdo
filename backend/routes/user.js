@@ -13,7 +13,7 @@ router.get('/community', (req, res, next) => {
     })
 });
 
-router.post('/userDetails/:id', (req, res, next) => {
+router.get('/userDetails/:id', (req, res, next) => {
   User
     .findById(req.params.id)
     .then(user => res.json(user))
