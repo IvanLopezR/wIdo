@@ -101,8 +101,10 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
                 >
                     <div>
                         <h1 className="title-infowindow">{selectedMarker.title}</h1>
-                        {props.user._id === props.loggedInUser._id && props.dele === "home" ? <button id="delete-btn" className="delete-btn-place" onClick={() => props.deleteF(selectedMarker)} >Delete</button> : ""}
-                        <span className="">{moment(selectedMarker.timestamps).format("dd/mm/YYYY hh:MM")}</span>
+                        <div>
+                            {props.user._id === props.loggedInUser._id && props.dele === "home" ? <button id="delete-btn" className="delete-btn-place" onClick={() => props.deleteF(selectedMarker)} >Delete</button> : ""}
+                            <span className="date">{moment(selectedMarker.timestamps).format("DD/MM/YYYY hh:MM")}</span>
+                        </div>
                         <img className="img-infowindow" src={selectedMarker.imgName}></img>
                     </div>
                 </InfoWindow>

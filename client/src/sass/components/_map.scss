@@ -27,6 +27,7 @@
 
 .title-infowindow{
     width: 300px;
+    text-align: center;
 }
 
 .coordinates{
@@ -41,4 +42,16 @@
 
 .pict-upload{
     height: 50px;
+}
+
+.delete-btn-place{
+    background-color: red;
+    margin:10px;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.date{
 }
