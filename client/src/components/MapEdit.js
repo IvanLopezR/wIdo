@@ -23,14 +23,15 @@ class MapEdit extends Component {
                 lat: 40.416775,
                 lng: -3.703790,
             },
-            // imgName2:"",
-            click:null
+            click: null,
+            newCountries: [],
         };
         this.control = false;
         this.idBtn = "btn-save";
         this.selectType = "select-type";
         this.pictPlace = "pict-place";
         this.titlePlace = "title-place";
+        this.dele = "board";
         this.service = new PlaceService();
         this.userService = new UserService();
     }
@@ -49,14 +50,16 @@ class MapEdit extends Component {
         this.getPlaces()
     }
 
+
     getPlaces() {
-        this.userService.findUserPlaces(this.props.user._id)
+        this.userService.findUserPlaces(this.props.loggedInUser._id)
             .then(userPlaces => {
                 console.log(userPlaces)
                 // this.setState({ places: userPlaces.places })
                 this.setState({
                     ...this.state,
                     places: userPlaces.places,
+                    newCountries: this.props.loggedInUser.countries
                 }, () => {
                     this.setState({ isLoading: true })
                 })
@@ -69,15 +72,15 @@ class MapEdit extends Component {
     }
 
     handleFileUpload = e => {
-        this.setState({ imgName: ""})
+        this.setState({ imgName: "" })
         document.getElementById(this.idBtn).style.backgroundColor = "white";
-                    document.getElementById(this.idBtn).disabled = true;
+        document.getElementById(this.idBtn).disabled = true;
         console.log("The file to be uploaded is: ", e.target.files[0]);
         console.log(this.state.lat)
         const uploadData = new FormData();
         uploadData.append("imgName", e.target.files[0]);
         this.service.placePicture(uploadData)
-        
+
             .then(response => {
                 this.setState({ imgName: response.secure_url });
                 this.control = true;
@@ -94,27 +97,27 @@ class MapEdit extends Component {
 
     handleClick = (event) => {
         let clicky = <Marker
-        animation={2}
-        position={
-            { lat: event.latLng.lat(), lng: event.latLng.lng()}
-        }
-        icon={{
-            url:'/select-icon.png',
-            scaledSize: new window.google.maps.Size(30,42)
-        }}/>
-        this.setState({...this.state, click: clicky})
+            animation={2}
+            position={
+                { lat: event.latLng.lat(), lng: event.latLng.lng() }
+            }
+            icon={{
+                url: '/select-icon.png',
+                scaledSize: new window.google.maps.Size(30, 42)
+            }} />
+        this.setState({ ...this.state, click: clicky })
 
         var lat = event.latLng.lat(), lng = event.latLng.lng()
         if (this.control) {
             document.getElementById(this.idBtn).style.backgroundColor = "green";
             document.getElementById(this.idBtn).disabled = false;
         }
-        let newCenterCoor = {lat: lat, lng: lng}
+        let newCenterCoor = { lat: lat, lng: lng }
         this.setState({
             ...this.state,
             lat: lat,
             lng: lng,
-            centerCoor : newCenterCoor 
+            centerCoor: newCenterCoor
         })
     }
 
@@ -139,7 +142,7 @@ class MapEdit extends Component {
         const original_date = tomonth + '/' + todate + '/' + toyear;
         console.log(original_date);
         // const timestamps = new Intl.DateTimeFormat('en-US', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'}).format(timestamp);
-        this.service.saveNewThing(this.state.title, this.state.imgName, this.state.lat, this.state.lng, this.state.type, this.props.user._id, original_date)
+        this.service.saveNewThing(this.state.title, this.state.imgName, this.state.lat, this.state.lng, this.state.type, this.props.loggedInUser._id, original_date)
             .then(res => {
                 document.getElementById(this.idBtn).style.backgroundColor = "white";
                 document.getElementById(this.idBtn).disabled = true;
@@ -168,7 +171,39 @@ class MapEdit extends Component {
             });
     }
 
+    deleteF = (obj) => {
+        axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${obj.coordinates.lat}+${obj.coordinates.lng}&key=b7625141969e4a07967359fe133e01cf`)
+            .then(reponseFromApi => {
+                const co = reponseFromApi.data
+                const country = co.results[0].components["ISO_3166-1_alpha-3"]
+                let newArray = this.state.newCountries
+                this.service.deletePlace(obj._id, this.props.loggedInUser._id)
+                    .then(res => {
+                        let find = true
+                        for (let i = 0; i < newArray.length; i++) {
+                            if (newArray[i] === country && find) {
+                                newArray.splice(i, 1);
+                                find = false;
+                            }
+                        }
+                        this.userService.changeInCountries(this.props.loggedInUser._id, newArray)
+                            .then(res => {
+                            })
+                        this.setState({
+                            ...this.state,
+                            places: this.state.places.filter(place => place._id !== res._id),
+                            selectedMarker: !this.state.selectedMarker
+                        })
+                    });
+            })
+    }
+
+    openInfo() {
+        this.setState({ ...this.state, selectedMarker: true })
+    }
+
     render() {
+        console.log(this.state.newCountries)
         if (this.state.isLoading) {
             return (
                 <div className="map-container" style={{ width: '98%', height: '100vh' }}>
@@ -186,7 +221,8 @@ class MapEdit extends Component {
                             <input className="form-control input-place" placeholder="Title" id="title-place" name="title" onChange={(e) => this.handleChange(e)} required></input>
                         </form>
                     </div>
-
+                    {console.log(this.props.community)}
+                    {console.log(this.props.loggedInUser)}
                     <WrappedMap
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLEMAPSAPIKEY}`}
                         loadingElement={<div style={{ height: `100%` }} />}
@@ -194,8 +230,14 @@ class MapEdit extends Component {
                         mapElement={<div style={{ height: `100%` }} />}
                         markers={this.state.places}
                         clicky={this.state.click}
-                        newMarker={(e)=>{this.handleClick(e)}}
+                        newMarker={(e) => { this.handleClick(e) }}
                         centerMap={this.state.centerCoor}
+                        user={this.props.community}
+                        loggedInUser={this.props.loggedInUser}
+                        deleteF={this.deleteF}
+                        selectedMarkerOut={this.state.selectedMarker}
+                        openInfo={() => this.openInfo()}
+                        dele={this.dele}
                     ></WrappedMap>
                     <div className="coordinates">
                         <span className="coordinates-separate">Lat:{this.state.lat}</span>
@@ -204,7 +246,7 @@ class MapEdit extends Component {
                 </div>
             )
         } else {
-            return <h1>LOADING...</h1>
+            return <h1>Loading...</h1>
         }
     }
 }

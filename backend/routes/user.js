@@ -117,26 +117,26 @@ router.post('/follow', (req, res, next) => {
 
 router.post('/unfollow', (req, res, next) => {
   User
-  .findByIdAndUpdate(req.body.own._id, { $pull: { following: req.body.user._id } }, { new: true })
+  .findByIdAndUpdate(req.body.own, { $pull: { following: req.body.user } }, { new: true })
     .then(updateData => {
       User
-        .findByIdAndUpdate(req.body.user._id, { $pull: { followers: req.body.own._id } }, { new: true })
+        .findByIdAndUpdate(req.body.user, { $pull: { followers: req.body.own } }, { new: true })
         .then(update => {
           res.json(update);
         })
     })
 })
 
-router.post('/followers', (req, res, next) => {
+router.get('/followers/:id', (req, res, next) => {
   User
-  .findOne(req.body.userId)
+  .findById(req.params.id)
   .then(user => {
     res.json(user.followers)
   })
   .catch(err => console.log(err))
 })
 
-router.post('/following/:id', (req, res, next) => {
+router.get('/following/:id', (req, res, next) => {
   User
   .findById(req.params.id)
   .then(user => {
@@ -149,6 +149,18 @@ router.get('/userExtend/:id', (req, res, next) => {
   User
   .findById(req.params.id)
   .then(user => {
+    res.json(user)
+  })
+  .catch(err => console.log(err))
+})
+
+router.post('/changeInCountries', (req, res, next) => {
+  console.log(req.body.id);
+  console.log(req.body.newArray);
+  User
+  .findByIdAndUpdate(req.body.id, { countries: req.body.newArray }, { new: true })
+  .then(user => {
+    console.log(user)
     res.json(user)
   })
   .catch(err => console.log(err))

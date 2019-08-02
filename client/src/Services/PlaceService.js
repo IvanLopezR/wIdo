@@ -19,6 +19,13 @@ export default class PlaceServices {
     .then(res => res.data)
   }
 
+  deletePlace = (placeId, userId ) => {
+    console.log(placeId);
+    console.log(userId);
+    return this.service.post(`/deletePlace`, { placeId, userId })
+    .then(res => res.data)
+  }
+
   saveNewThing = (title, imgName, lat, lng, type, author, timestamps) => {
     console.log(title);
     console.log(imgName);

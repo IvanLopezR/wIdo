@@ -30,7 +30,7 @@ export default class Selected_User extends Component {
             arrCountries: [],
             country: "",
             countries: [],
-            followed: "",
+            followed: false,
         };
         this.arrayCountries = [];
         this.setLevel = "Neighborhood";
@@ -72,23 +72,23 @@ export default class Selected_User extends Component {
                     countries: arr,
                 })
             })
-        if (this.arrayCountries.length > 2 && this.arrayCountries.length < 5) {
+        if (this.arrayCountries.length > 0 && this.arrayCountries.length < 3) {
             this.setLevel = "Curious";
             this.pictLevel = "../Curious.png"
         }
-        else if (this.arrayCountries.length >= 5 && this.arrayCountries.length < 10) {
+        else if (this.arrayCountries.length >= 3 && this.arrayCountries.length < 5) {
             this.setLevel = "Adventurous";
             this.pictLevel = "../Adventurous.png"
         }
-        else if (this.arrayCountries.length >= 10 && this.arrayCountries.length < 15) {
+        else if (this.arrayCountries.length >= 5 && this.arrayCountries.length < 10) {
             this.setLevel = "Jet Lag";
             this.pictLevel = "../JetLag.png"
         }
-        else if (this.arrayCountries.length >= 15 && this.arrayCountries.length < 20) {
+        else if (this.arrayCountries.length >= 10 && this.arrayCountries.length < 15) {
             this.setLevel = "Cristobal Colón";
             this.pictLevel = "../Colon.svg"
         }
-        else if (this.arrayCountries.length >= 20) {
+        else if (this.arrayCountries.length >= 15) {
             this.setLevel = "Willy Fog";
             this.pictLevel = "../WillyFog.png"
         }
@@ -98,32 +98,34 @@ export default class Selected_User extends Component {
 
     componentDidMount() {
         this.service.selectUser(this.props.us)
-            .then(selectUser => {
-                console.log(selectUser)
+        .then(selectUser => {
+            console.log(selectUser)
+            this.setState({
+                ...this.state,
+                users: selectUser
+            })
+            this.getPropCountry();
+            if (selectUser.followers.includes(this.props.loggedInUser._id)) {
                 this.setState({
                     ...this.state,
-                    users: selectUser
+                    followed: true,
                 })
-                this.getPropCountry();
-                if (this.state.users.followers.includes(this.props._id)) {            
-                    this.setState({
-                        ...this.state,
-                        followed:true,
-                    })
-                }
-            });
+            }
+        });
     }
+    
 
     follow(e) {
         e.preventDefault()
-        this.service.follow(this.props._id, this.props.us)
+        console.log(this.props)
+        this.service.follow(this.props.loggedInUser._id, this.props.us)
             .then(res => {
-                // console.log('added: ', res);
+                console.log('added: ', res);
+                console.log(res.followers)
                 // here you would redirect to some other page 
-                this.setState({
-                    ...this.state,
-                    followed:true,
-                })
+                this.state.users.followers = res.followers;
+                this.state.followed = !this.state.followed;
+                this.setState(this.state)
             })
             .catch(err => {
                 console.log("Error while adding the thing: ", err);
@@ -132,14 +134,14 @@ export default class Selected_User extends Component {
 
     unfollow(e) {
         e.preventDefault()
-        this.service.unfollow(this.props, this.state.users)
+        console.log(this.props.loggedInUser._id)
+        console.log(this.props.us)
+        this.service.unfollow(this.props.loggedInUser._id, this.props.us)
             .then(res => {
-                // console.log('added: ', res);
-                // here you would redirect to some other page 
-                this.setState({
-                    ...this.state,
-                    followed:false,
-                })
+                console.log(res);
+                this.state.users.followers = res.followers;
+                this.state.followed = !this.state.followed;
+                this.setState(this.state)
             })
             .catch(err => {
                 console.log("Error while adding the thing: ", err);
@@ -147,10 +149,7 @@ export default class Selected_User extends Component {
     }
 
     render() {
-        console.log("Usuario Actual: ")
-        console.log(this.props)
-        console.log("Usuario Vista: ")
-        console.log(this.state.users)
+        console.log(this.props.us);
         if (this.isLoading) {
             return (
                 <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
@@ -158,12 +157,12 @@ export default class Selected_User extends Component {
                         <div className="container-profile">
                             <div className="pict-follow">
                                 <img className="profile" src={this.state.users.imgName} alt={this.state.users.imgName} title={this.state.users.name} />
-                                {console.log(this.state.followed)}
+                                {/* {console.log(this.state.followed)} */}
                                 {this.state.followed ? (
                                     <button id="follow-btn" className="follow-btn-not" onClick={e => this.unfollow(e)}>Unfollow</button>
-                                    ) : (
+                                ) : (
                                         <button id="follow-btn" className="follow-btn-ok" onClick={e => this.follow(e)}>Follow</button>
-                                )}
+                                    )}
                             </div>
                             <div className="data-container">
                                 <Link to={"/Country/" + this.state.users.country} ><img src={this.state.country.flag} className="flag-address" alt={this.state.country.name} title={this.state.country.name}></img></Link>
@@ -182,7 +181,7 @@ export default class Selected_User extends Component {
                             </div>
                         </div>
                         < div className="map-profile">
-                            <Map user={this.props.us}></Map>
+                            <Map community={this.state.users} loggedInUser={this.props.loggedInUser} ></Map>
                         </div>
                     </div>
                     <Footer></Footer>

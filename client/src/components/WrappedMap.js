@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import { Marker, InfoWindow } from "react-google-maps";
-const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
+import PlaceService from "../Services/PlaceService";
+import moment from "moment";
+import Axios from "axios";
+import ZoomImg from "./ZoomImg";
+const service = new PlaceService();
+
 
 const WrappedMap = withScriptjs(withGoogleMap((props) => {
     const [selectedMarker, setSelectedMarker] = useState(null);
-    console.log(props.centerMap)
+
     return (
         <GoogleMap
             defaultZoom={3}
@@ -14,74 +19,79 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
             }
             onClick={props.newMarker}
         >
-            
+
             {props.clicky}
-                    
+
             {props.markers.map(marker => {
-                if(marker.type==="Activity Place"){
+                if (marker.type === "Activity Place") {
                     return <Marker
-                    animation={4}
-                    key={marker._id}
-                    position={
-                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
-                    }
-                    onClick={() => {
-                        setSelectedMarker(marker);
-                    }}
-                    icon={{
-                        url:'/activity-icon.png',
-                        scaledSize: new window.google.maps.Size(30,42)
-                    }}
-                />
+                        animation={4}
+                        key={marker._id}
+                        position={
+                            { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                        }
+                        onClick={() => {
+                            props.openInfo();
+                            setSelectedMarker(marker);
+                        }}
+                        icon={{
+                            url: '/activity-icon.png',
+                            scaledSize: new window.google.maps.Size(30, 42)
+                        }}
+                    />
                 }
-                else if(marker.type==="Food Place"){
+                else if (marker.type === "Food Place") {
                     return <Marker
-                    animation={4}
-                    key={marker._id}
-                    position={
-                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
-                    }
-                    onClick={() => {
-                        setSelectedMarker(marker);
-                    }}
-                    icon={{
-                        url:'/food-icon.png',
-                        scaledSize: new window.google.maps.Size(30,42)
-                    }}
-                />
+                        animation={4}
+                        key={marker._id}
+                        position={
+                            { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                        }
+                        onClick={() => {
+                            props.openInfo();
+                            setSelectedMarker(marker);
+                        }}
+                        icon={{
+                            url: '/food-icon.png',
+                            scaledSize: new window.google.maps.Size(30, 42)
+                        }}
+                    />
                 }
-                else if(marker.type==="Sleep Place"){
+                else if (marker.type === "Sleep Place") {
                     return <Marker
-                    animation={4}
-                    key={marker._id}
-                    position={
-                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
-                    }
-                    onClick={() => {
-                        setSelectedMarker(marker);
-                    }}
-                    icon={{
-                        url:'/sleep-icon.png',
-                        scaledSize: new window.google.maps.Size(30,42)
-                    }}
-                />
+                        animation={4}
+                        key={marker._id}
+                        position={
+                            { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                        }
+                        onClick={() => {
+                            props.openInfo();
+                            setSelectedMarker(marker);
+                        }}
+                        icon={{
+                            url: '/sleep-icon.png',
+                            scaledSize: new window.google.maps.Size(30, 42)
+                        }}
+                    />
                 }
-                else{
+                else {
                     return <Marker
-                    animation={4}
-                    key={marker._id}
-                    position={
-                        { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
-                    }
-                    onClick={() => {
-                        setSelectedMarker(marker);
-                    }}
-                />
+                        animation={4}
+                        key={marker._id}
+                        position={
+                            { lat: marker.coordinates.lat, lng: marker.coordinates.lng }
+                        }
+                        onClick={() => {
+                            props.openInfo();
+                            setSelectedMarker(marker);
+                        }}
+                    />
                 }
-                
+
             })}
-            
-            {selectedMarker && (
+
+            {props.selectedMarkerOut?
+            selectedMarker && (
                 <InfoWindow position={
                     { lat: selectedMarker.coordinates.lat, lng: selectedMarker.coordinates.lng }
                 }
@@ -91,17 +101,12 @@ const WrappedMap = withScriptjs(withGoogleMap((props) => {
                 >
                     <div>
                         <h1 className="title-infowindow">{selectedMarker.title}</h1>
-                        {/* {{if(){
-                            
-                        }
-                    }} */}
-                        <button className="">Delete</button>
-                        <span className="">{selectedMarker.timestamps}</span>
+                        {props.user._id === props.loggedInUser._id && props.dele === "home" ? <button id="delete-btn" className="delete-btn-place" onClick={() => props.deleteF(selectedMarker)} >Delete</button> : ""}
+                        <span className="">{moment(selectedMarker.timestamps).format("dd/mm/YYYY hh:MM")}</span>
                         <img className="img-infowindow" src={selectedMarker.imgName}></img>
-
                     </div>
                 </InfoWindow>
-            )}
+            ): ""}
         </GoogleMap>
     );
 }

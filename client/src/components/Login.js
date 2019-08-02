@@ -62,12 +62,6 @@ class Login extends Component {
               </div>
               <div className="container-btn-signup">
                 <button className="btn-signup">Get In</button>
-                {/* <InstagramLogin className="login-social"
-                  clientId="5fd2f11482844c5eba963747a5f34556"
-                  buttonText="Instagram Login"
-                  onSuccess={responseInstagram}
-                  onFailure={responseInstagram}
-                /> */}
               </div>
             </form>
             <div className="advise-login msg-err-login">

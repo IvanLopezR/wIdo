@@ -9,7 +9,6 @@ export default class User extends Component {
         };
       }
     render() {
-        console.log(this.props.id)
         return (
             <div className="country-container">
                 <Link to={"/User/" + this.props._id} ><img className="profile" src={this.props.imgName} alt=""></img></Link>

@@ -93,6 +93,10 @@
 }
 
 .qr-code{
-  margin-left: 100px;
-  margin-top: 80px;
+  margin-top: 60px;
 }
+
+ .pict-qr{
+   display: flex;
+   flex-direction: row-reverse;
+ }

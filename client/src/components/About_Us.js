@@ -8,7 +8,7 @@ export default class About_Us extends Component {
                 <div className="content-about-us">
                     <div className="about-us">
                         <h3 className="title-about-us">Ironhack Madrid, Iván López Ruiz final project´s.</h3>
-                        <h5>Special thanks to Dani Vicario <span>🧘‍</span>, Sito <span>🏍</span>, Luca <span>🇮🇹</span>, Raluca <span>🍸</span> and all my Ironhack brothers: </h5>
+                        <h5>Special thanks to Dani Vicario <span>🧘‍</span>, Sito <span>🏍</span>, Luca <span>🍕</span>, Raluca <span>🍸</span> and all my Ironhack brothers (the best promotion ❤): </h5>
                         <ul className="list-about-us">
                             <li>Carlos <span>🎧</span></li>
                             <li>Vanesa <span>👵</span></li>
@@ -18,10 +18,10 @@ export default class About_Us extends Component {
                             <li>Rafa <span>⚖</span></li>
                             <li>Javi <span>🏝</span></li>
                             <li>Francho <span>🛴</span></li>
-                            <li>Sergio <span> 👨‍👩‍👧‍</span></li>
+                            <li>Sergio <span>👨‍👩‍👧‍👦</span></li>
                             <li>Juan <span>🎮</span></li>
                             <li>Micael <span>🚂</span></li>
-                            <li>Miriam <span>🍕</span></li>
+                            <li>Miriam <span>🙆‍</span></li>
                             <li>Agustín <span>♻</span></li>
                         </ul>
 

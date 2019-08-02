@@ -63,17 +63,22 @@ export default class UserServices {
   }
 
   followers = userId => {
-    return this.service.post('/followers', userId)
+    return this.service.get(`/followers/${userId}`)
     .then(res => res.data)
   }
 
   following = userId => {
-    return this.service.post(`/following/${userId}`)
+    return this.service.get(`/following/${userId}`)
     .then(res => res.data)
   }
 
   getUserExtend = userId => {
     return this.service.get(`/userExtend/${userId}`)
+    .then(res => res.data)
+  }
+
+  changeInCountries = (id, newArray) => {
+    return this.service.post('/changeInCountries', {id, newArray})
     .then(res => res.data)
   }
 

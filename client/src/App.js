@@ -40,7 +40,6 @@ class App extends Component {
 
   fetchUser = () => {
     this.service.loggedIn().then((userData) => {
-      console.log(userData)
       if (userData) {
         this.setState({
           loggedInUser: userData
@@ -75,14 +74,14 @@ class App extends Component {
         <React.Fragment>
           <Navbar logout={this.logout}></Navbar>
           <Switch>
-            <Route exact path='/Home' render={() => <Home {...this.state.loggedInUser} />} />
+            <Route exact path='/Home' render={(props) => <Home {...props} {...this.state.loggedInUser} />} />
             <Route exact path='/Profile' render={() => <Profile {...this.state.loggedInUser} />} />
             <Route exact path='/Community' render={() => <Community {...this.state.loggedInUser} />} />
             <Route exact path='/Countries' render={() => <Countries {...this.state.loggedInUser} />} />
             <Route exact path='/Selected_Country' render={() => <Selected_Country {...this.state.loggedInUser} />} />
             <Route exact path='/Following' render={() => <Following {...this.state.loggedInUser} />} />
             <Route exact path='/Followers' render={() => <Followers {...this.state.loggedInUser} />} />
-            <Route exact path='/Map_Board' render={() => <Map_Board {...this.state.loggedInUser} />} />
+            <Route exact path='/Map_Board' render={(props) => <Map_Board {...props} {...this.state.loggedInUser} />} />
             <Route exact path='/Edit_Profile' render={() => <Edit_Profile fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
             <Route exact path='/About_Us' render={() => <About_Us {...this.state.loggedInUser} />} />
             <Route exact path='/Invite' render={() => <Invite fetchUser={this.fetchUser} {...this.state.loggedInUser} />} />
@@ -96,7 +95,7 @@ class App extends Component {
             />
             <Route exact path='/User/:chosenUser' render={(props) => {
               var chosenUser = props.match.params.chosenUser;
-              return <Selected_User us={chosenUser} {...this.state.loggedInUser}></Selected_User>
+              return <Selected_User  us={chosenUser} loggedInUser={this.state.loggedInUser}></Selected_User>
             }}
             />
           </Switch>

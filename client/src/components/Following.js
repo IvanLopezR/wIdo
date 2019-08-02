@@ -10,6 +10,7 @@ export default class Following extends Component {
             users: [],
             usersExpand : []
         };
+        this.isLoading=false;
         this.service = new UserServices();
     }
 
@@ -22,20 +23,21 @@ export default class Following extends Component {
                 })
                 this.getUserData();
             });
+            this.isLoading=true;
     }
 
     searchUser(e) {
         e = e.target.value.slice(0, 1).toUpperCase() + e.target.value.slice(1, e.length);
         let newState = { ...this.state };
-        let findUsers = newState.users.filter(ele => ele.name.indexOf(e)
+        let findUsers = newState.usersExpand.filter(ele => ele.name.indexOf(e)
             === 0);
         this.setState({
             ...this.state,
-            users: findUsers
+            usersExpand: findUsers
         }
             ,
             () => {
-                this.state.users = [...newState.users]
+                this.state.usersExpand = [...newState.usersExpand]
             }
         );
     }
@@ -52,22 +54,26 @@ export default class Following extends Component {
     }
 
     render() {
-        console.log(this.usersExpand);
-        return (
-            <div className={'background-general background-index-19'}>
-                <div className="content-adapt">
-                    <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchUser(e)}></input>
-                    <div className="container-profile">
-                        <div className="countries">
-                            {this.state.usersExpand.map((feature, idx) => {
-                                console.log(feature)
-                                return <User {...feature} key={idx} />
-                            })}
+        if(this.isLoading){
+            return (
+                <div className={'background-general background-index-19'}>
+                    <div className="content-adapt">
+                        <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchUser(e)}></input>
+                        <div className="container-profile">
+                            <div className="countries">
+                                {this.state.usersExpand.map((feature, idx) => {
+                                    console.log(feature)
+                                    return <User {...feature} key={idx} />
+                                })}
+                            </div>
                         </div>
+                        <Footer></Footer>
                     </div>
-                    <Footer></Footer>
                 </div>
-            </div>
-        )
+            )
+        }
+        else{
+            return <h1>Loading...</h1>
+        }
     }
 }

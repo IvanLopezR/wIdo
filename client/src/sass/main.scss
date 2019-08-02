@@ -1,6 +1,7 @@
 @import "./base/reset.scss";
 @import "./base/typography.scss";
 
+
 @import "./pages/Index";
 @import "./pages/_Login";
 @import "./pages/_Profile";
@@ -14,4 +15,5 @@
 @import "./components/_background";
 @import "./components/navbar";
 @import "./components/footer";
+@import "./components/ZoomImg";
 @import "./components/map";

@@ -28,7 +28,7 @@ router.post('/create', (req, res, next) => {
     .create({
       title: req.body.title,
       imgName: req.body.imgName,
-      coordinates:{
+      coordinates: {
         lat: req.body.lat,
         lng: req.body.lng,
       },
@@ -37,9 +37,9 @@ router.post('/create', (req, res, next) => {
       timestamps: req.body.timestamps,
     })
     .then(createdTask => {
-      User.findByIdAndUpdate(req.user._id,{$push: {places: createdTask._id}},{new:true})
+      User.findByIdAndUpdate(req.user._id, { $push: { places: createdTask._id } }, { new: true })
         .populate("places")
-        .then( user => {
+        .then(user => {
           console.log(user)
           res.json(user);
         }
@@ -47,15 +47,21 @@ router.post('/create', (req, res, next) => {
     })
 })
 
+router.post('/deletePlace', (req, res, next) => {
+  console.log("entro");
+  // placeId, country, userId
+  console.log(req.body.placeId);
+  console.log(req.body.userId);
+  User
+    .findByIdAndUpdate(req.body.userId, { $pull: { places: req.body.placeId } }, { new: true })
+    .then(updateData => {
+      Place
+        .findByIdAndRemove(req.body.placeId)
+        .then(update => {
+          res.json(update);
+        })
+    })
+})
 
-  // Place
-  //   Place.find().then(places => {
-  //     console.log(places);
-  //       res.json(places);
-  // })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
-// });
 
 module.exports = router;

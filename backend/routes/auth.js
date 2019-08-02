@@ -108,13 +108,15 @@ router.post("/signup", (req, res, next) => {
     newUser.save()
       .then((user) => {
         transporter.sendMail({
-          from: '"wIdo📍" <process.env.USER>',
+          from: '"w📍do" <process.env.USER>',
           to: email,
-          subject: 'Confirmation email - Social Network Locations 📌',
+          subject: 'Welcome - Social Network Locations 📌',
           text: 'Awesome Message',
-          html: `<b>Confirm Account</b>
-                  <a
-                  href="http://localhost:3000/auth/confirm/${token}">Click here</a> and share your favourites locations with your contacts.`
+          html: `<h2>Now you are part of the wIdo family</h2>
+                <p>You can start sharing your favourites worlds locations with the other user and discover
+                where can you go in your next travel, what can you do there and why have to go, the triple 'W' + I do.</p>
+                <p>Thank you for your registration and enjoy!</p>
+                <img src=https://res.cloudinary.com/dpkvkfi5u/image/upload/v1564399013/wIdo-gallery/logo-wIdo.png.png>`
         })
         res.json(user);
       })
