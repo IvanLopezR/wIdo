@@ -37,7 +37,7 @@ class Invite extends Component {
         return (
             <div className={'background-general background-index-61'}>
                 <div className="container-invite">
-                    <h2>Invite your friends to join <img src="logo-wido.png" className="img-invite"></img> and discover their favourites world places.</h2>
+                    <h2>Invite your friends to join <img src="/logo-wido.png" className="img-invite"></img> and discover their favourites world places.</h2>
                     <h3>Share by email:</h3>
                     <form onSubmit={this.handleFormSubmit}>
                         <input type="email" id="email-invite" className="input-invite" value={this.state.emailFriend} onChange={e => this.handleChangeEmailFriend(e)} required autoFocus></input>

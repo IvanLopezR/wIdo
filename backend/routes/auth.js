@@ -144,7 +144,7 @@ router.post('/invite', (req, res, next) => {
     transporter.sendMail({
       from: '"w📍do" <process.env.USER>',
       to: emailFriend,
-      subject: `${name} invite you to participate in wIdo - Social Network Locations 📌`,
+      subject: `${name} invites you to participate in wIdo - Social Network Locations 📌`,
       text: 'Awesome Message',
       html: `<body>              
               <h2>Start today discovering the favourite places of your friends and share your's.</h3>
