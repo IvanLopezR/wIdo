@@ -1,0 +1,6 @@
+Cd client
+npm run build-prod
+Cd ..
+Git add .
+Git commit -m "done"
+Git subtree push --prefix=backend heroku master
