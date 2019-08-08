@@ -47,7 +47,7 @@ export default class Countries extends Component {
             <div className={'background-general background-index-62'}>
                 <div className="content-adapt">
                     <input className="search-country" placeholder="Find country by name..." onChange={(e) => this.searchCountry(e)}></input>
-                    <div className="container-profile">
+                    <div className="container-users">
                         <div className="countries">
                             {this.state.countries.map((feature, idx) => {
                                 return <Country {...feature} key={idx} />

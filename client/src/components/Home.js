@@ -91,14 +91,14 @@ export default class Home extends Component {
         pictLevel : "JetLag.png"
       })
     }
-    else if (this.state.arrCountries.length >= 10 && this.state.arrCountries.length < 15) {
+    else if (this.state.arrCountries.length >= 10 && this.state.arrCountries.length < 17) {
       this.setState({
         ...this.state,
         setLevel : "Cristobal Colón",
         pictLevel : "Colon.svg"
       })
     }
-    else if (this.state.arrCountries.length >= 15) {
+    else if (this.state.arrCountries.length >= 17) {
       this.setState({
         ...this.state,
         setLevel : "Willy Fog",
@@ -126,7 +126,6 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.state.user.countries)
     if(this.isLoading){
       return (
         <div className={'background-general background-index-' + Math.floor(Math.random() * 73 + 1)}>
@@ -139,7 +138,7 @@ export default class Home extends Component {
                 <Link to={"/country/" + this.state.country.alpha3Code} ><img src={this.state.country.flag} className="flag-address" alt={this.state.country.name} title={this.state.country.name}></img></Link>
                 <div className="unit-name-level">
                   <h2><Link className="link-profile" to={"../profile"}>{this.props.name}</Link></h2>
-                  <img src={this.state.pictLevel} className="img-level-home" alt={this.state.setLevel} title={`Level ${this.setLevel}`}></img>
+                  <img src={this.state.pictLevel} className="img-level-home" alt={this.state.setLevel} title={`Level ${this.state.setLevel}`}></img>
                 </div>
                 <h5 className="info-profile">Level: {this.state.setLevel} <span className="separator-info-profile"></span> Following: {this.state.followi} <span className="separator-info-profile"></span> Followers: {this.state.followe}</h5>
                 <h5 className="info-profile conquered-countries">Conquered Countries:

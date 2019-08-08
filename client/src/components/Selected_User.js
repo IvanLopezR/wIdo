@@ -3,7 +3,7 @@ import UserServices from '../Services/UserService';
 import Footer from './Footer';
 import axios from "axios";
 import Map from './Map';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 let countryInfo = {
     name: "",
@@ -84,11 +84,11 @@ export default class Selected_User extends Component {
             this.setLevel = "Jet Lag";
             this.pictLevel = "../JetLag.png"
         }
-        else if (this.arrayCountries.length >= 10 && this.arrayCountries.length < 15) {
+        else if (this.arrayCountries.length >= 10 && this.arrayCountries.length < 17) {
             this.setLevel = "Cristobal Colón";
             this.pictLevel = "../Colon.svg"
         }
-        else if (this.arrayCountries.length >= 15) {
+        else if (this.arrayCountries.length >= 17) {
             this.setLevel = "Willy Fog";
             this.pictLevel = "../WillyFog.png"
         }
@@ -157,12 +157,12 @@ export default class Selected_User extends Component {
                         <div className="container-profile">
                             <div className="pict-follow">
                                 <img className="profile" src={this.state.users.imgName} alt={this.state.users.imgName} title={this.state.users.name} />
-                                {/* {console.log(this.state.followed)} */}
                                 {this.state.followed ? (
                                     <button id="follow-btn" className="follow-btn-not" onClick={e => this.unfollow(e)}>Unfollow</button>
                                 ) : (
                                         <button id="follow-btn" className="follow-btn-ok" onClick={e => this.follow(e)}>Follow</button>
                                     )}
+                                <Link to={"/Message/"+ this.state.users._id} params={{ testvalue: "hello" }}><img className="message" src="/message.png" alt="message" title="Write Message" /></Link>
                             </div>
                             <div className="data-container">
                                 <Link to={"/Country/" + this.state.users.country} ><img src={this.state.country.flag} className="flag-address" alt={this.state.country.name} title={this.state.country.name}></img></Link>

@@ -3,8 +3,6 @@ import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import { Marker, InfoWindow } from "react-google-maps";
 import PlaceService from "../Services/PlaceService";
 import moment from "moment";
-import Axios from "axios";
-import ZoomImg from "./ZoomImg";
 const service = new PlaceService();
 
 

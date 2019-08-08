@@ -54,7 +54,7 @@ class Login extends Component {
             <form onSubmit={this.handleFormSubmit}>
               <div className="username form-group">
                 <label htmlFor="username" name="username">User Name</label>
-                <input id="username" className="form-control" type="text" name="username" required value={this.state.username} onChange={e => this.handleChange(e)} />
+                <input id="username" className="form-control" type="text" name="username" required value={this.state.username} onChange={e => this.handleChange(e)} autoFocus/>
               </div>
               <div className="pass form-group">
                 <label htmlFor="password">Password</label>

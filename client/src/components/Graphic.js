@@ -1,61 +1,89 @@
 import React, { Component } from 'react'
 import { Chart } from "react-charts";
-import UserServices from "../Services/UserService"
+import UserServices from "../Services/UserService";
+
 
 const data = [
     {
         label: "Series 1",
-        data: [{ x: 1, y: 100 }, { x: 2, y: 50 }, { x: 3, y: 100 }]
+        data: [{ x: "Countries", y: 17 }, { x: "Places", y: 27 }, { x: "Followers", y: 6 }]
     },
     {
         label: "Series 2",
-        data: [{ x: 1, y: 200 }, { x: 2, y: 100 }, { x: 3, y: 300 }]
+        data: [{ x: "Countries", y: 9 }, { x: "Places", y: 23 }, { x: "Followers", y: 1 }]
     },
     {
         label: "Series 3",
-        data: [{ x: 1, y: 30 }, { x: 2, y: 300 }, { x: 3, y: 50 }]
+        data: [{ x: "Countries", y: 6 }, { x: "Places", y: 7 }, { x: "Followers", y: 3 }]
     },
     {
         label: "Series 4",
-        data: [{ x: 1, y: 150 }, { x: 2, y: 200 }, { x: 3, y: 300 }]
+        data: [{ x: "Countries", y: 4 }, { x: "Places", y: 4 }, { x: "Followers", y: 3 }]
     },
     {
         label: "Series 5",
-        data: [{ x: 1, y: 100 }, { x: 2, y: 10 }, { x: 3, y: 200 }]
+        data: [{ x: "Countries", y: 3 }, { x: "Places", y: 6 }, { x: "Followers", y: 1 }]
     },
 ]
 
 
 export default class Graphic extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.isLoading = false;
         this.service = new UserServices();
         this.users = [];
+        this.best = [];
+        this.isLoading = false;
     }
 
     componentDidMount() {
         this.service.allUsers()
             .then(allUsers => {
-                this.users=allUsers
-                this.getBestUser()
+                this.users = allUsers
+                let unCountries = [];
+                this.best = this.users.map(elem => {
+                    unCountries = [];
+                    elem.countries.forEach(element => {
+                        if (!unCountries.includes(element)) {
+                            unCountries.push(element)
+                        }
+                    });
+                    return {
+                        countriesGood: unCountries.length,
+                        places: elem.places.length,
+                        followers: elem.followers.length,
+                        name: elem.name,
+                    }
+                })
+                this.best.sort((a, b) => {
+                    if (a.countriesGood > b.countriesGood) {
+                        return -1;
+                    }
+
+                    if (a.countriesGood < b.countriesGood) {
+                        return 1;
+                    }
+
+                    return 0;
+                });
+                this.best = this.best.slice(0, 5);
+                this.isLoading = true;
+                console.log(this.best);
             });
     }
 
-    getBestUser(){
-        console.log(this.users);
-    }
-
     render() {
+        console.log(this.best)
         return (
-            <div>
+            <div className="graphic">
                 <div
                     style={{
                         width: "1200px",
                         height: "600px"
                     }}
                 >
-                    <br/><br/>
+                    <br /><br />
                     <Chart
                         data={data}
                         axes={[
@@ -63,12 +91,13 @@ export default class Graphic extends Component {
                             { type: "linear", position: "left" }
                         ]}
                     />
-                    <h3>1.Line Blue</h3>
-                    <h3>2.Line Red</h3>
-                    <h3>3.Line Yellow</h3>
-                    <h3>4.Line Green</h3>
-                    <h3>5.Line Orange</h3>
-                    <p>Countries, pictures, followers</p>
+                    <div className="list-name">
+                        <h3 className="line1 line">1.IviLópez</h3>
+                        <h3 className="line2 line">2.Sonia_LR</h3>
+                        <h3 className="line3 line">3.Francho</h3>
+                        <h3 className="line4 line">4.Rafael</h3>
+                        <h3 className="line5 line">5.Cristina</h3>
+                    </div>
                 </div>
             </div>
         )

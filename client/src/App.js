@@ -15,6 +15,7 @@ import About_Us from './components/About_Us';
 import Navbar from './components/Navbar';
 import NavbarOut from './components/NavbarOut';
 import Invite from './components/Invite';
+import Message from './components/Message';
 import Password from './components/Password';
 import Picture from './components/Picture';
 import Edit_Profile from './components/Edit_Profile';
@@ -96,6 +97,11 @@ class App extends Component {
             <Route exact path='/User/:chosenUser' render={(props) => {
               var chosenUser = props.match.params.chosenUser;
               return <Selected_User  us={chosenUser} loggedInUser={this.state.loggedInUser}></Selected_User>
+            }}
+            />
+            <Route exact path='/Message/:userEmail' render={(props) => {
+            var userEmail = props.match.params.userEmail;
+            return <Message usEmail={userEmail} {...this.state.loggedInUser} />
             }}
             />
           </Switch>

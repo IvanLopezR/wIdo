@@ -23,6 +23,11 @@ export default class AuthServices {
       .then(response => response.data);
   }
 
+  email = (to,msg,by) => {
+    return this.service.post('/email', { to, msg, by })
+      .then(response => response.data);
+  }
+
   changePassword = (passwordNew, passwordNew2, password) => {
     return this.service.post('/changePassword', { passwordNew, passwordNew2, password })
     .then(response => response.data)

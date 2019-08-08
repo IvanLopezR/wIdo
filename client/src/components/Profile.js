@@ -92,13 +92,13 @@ export default class Profile extends Component {
         pictLevel: "JetLag.png"
       })
     }
-    else if (this.state.arrCountries.length >= 10 && this.state.arrCountries.length < 15) {
+    else if (this.state.arrCountries.length >= 10 && this.state.arrCountries.length < 17) {
       this.setState({
         setLevel: "Cristobal Colón",
         pictLevel: "Colon.svg"
       })
     }
-    else if (this.state.arrCountries.length >= 15) {
+    else if (this.state.arrCountries.length >= 17) {
       this.setState({
         setLevel: "Willy Fog",
         pictLevel: "WillyFog.png"
@@ -172,7 +172,7 @@ export default class Profile extends Component {
       )
     }
     else {
-      return <h1>Loaging...</h1>
+      return <h1>Loading...</h1>
     }
   }
 }

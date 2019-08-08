@@ -59,7 +59,7 @@ export default class Following extends Component {
                 <div className={'background-general background-index-19'}>
                     <div className="content-adapt">
                         <input className="search-country" placeholder="Find user by name..." onChange={(e) => this.searchUser(e)}></input>
-                        <div className="container-profile">
+                        <div className="container-users">
                             <div className="countries">
                                 {this.state.usersExpand.map((feature, idx) => {
                                     console.log(feature)
